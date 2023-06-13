@@ -4,3 +4,5 @@
 唐澤崇仁
 石井佑樹
 test
+test-ishii
+test-karasawa
