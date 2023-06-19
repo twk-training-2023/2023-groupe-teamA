@@ -13,6 +13,6 @@
 		社員番号:
 		<%=session.getAttribute("employeeNumber")%></p>
 	<a href="SkillApplication.jsp">スキル申請ページへ</a>
-	<a href="contactAdministratorsFrom.jsp">スキル申請ページへ</a>
+	<a href="contactAdministratorsFrom.jsp">管理者向け連絡入力フォームへ</a>
 </body>
 </html>

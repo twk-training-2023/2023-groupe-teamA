@@ -1,13 +1,18 @@
 package controller;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'work_karasawa' of ssh://git@github.com/twk-training-2023/2023-groupe-teamA
 
+import java.io.IOException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 public class MypageServlet {
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database_name";
 	private static final String DB_USER = "your_username";
@@ -94,5 +99,17 @@ public class MypageServlet {
 				}
 			}
 		}
+=======
+public class MypageServlet extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String username = (String) session.getAttribute("username");
+		// DAOを使用してデータベースから該当の社員情報を取得する
+		Employee employee = EmployeeDAO.getEmployeeByUsername(username);
+		// マイページのJSPに社員情報を渡して表示する
+		request.setAttribute("employee", employee);
+		request.getRequestDispatcher("mypage.jsp").forward(request, response);
+>>>>>>> branch 'work_karasawa' of ssh://git@github.com/twk-training-2023/2023-groupe-teamA
 	}
 }
