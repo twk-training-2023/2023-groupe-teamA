@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tomcatProjectProperties>
-    <rootDir>/view</rootDir>
+    <rootDir>/</rootDir>
     <workDir>work</workDir>
     <exportSource>false</exportSource>
     <reloadable>true</reloadable>

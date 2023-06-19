@@ -4729,9 +4729,14 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-
-
-
+	<servlet>
+		<servlet-name>LoginServletMapping</servlet-name>
+		<servlet-class>controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServletMapping</servlet-name>
+		<url-pattern>/WebProject/LoginServlet</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>
