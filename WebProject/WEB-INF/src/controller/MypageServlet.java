@@ -14,7 +14,7 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		// DAOを使用してデータベースから該当の社員情報を取得する
-		Employee employee = YourDAO.getEmployeeByUsername(username);
+		Employee employee = EmployeeDAO.getEmployeeByUsername(username);
 		// マイページのJSPに社員情報を渡して表示する
 		request.setAttribute("employee", employee);
 		request.getRequestDispatcher("mypage.jsp").forward(request, response);

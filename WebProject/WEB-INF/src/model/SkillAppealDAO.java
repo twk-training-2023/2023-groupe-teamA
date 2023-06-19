@@ -18,7 +18,7 @@ public class SkillAppealDAO {
 			// データベースに接続
 			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			// SQL文を準備
-			String sql = "INSERT INTO skill_appeal (employee_number, evidence) VALUES (?,?)";
+			String sql = "INSERT INTO skill_appeal (employee_number, skill_detail) VALUES (?,?)";
 			stmt = conn.prepareStatement(sql);
 			// パラメータを設定
 			stmt.setString(1, employeeNumber);
