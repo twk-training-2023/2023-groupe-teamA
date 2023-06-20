@@ -76,7 +76,7 @@ public class LoginServlet extends HttpServlet {
 // 			sessionスコープにログイン情報クラス「LoginInfo」を保存
 // 			メニュー画面のJSP＜mainMenu.jsp＞にフォワードする
  			if (loginInfo.getPermissionLevel() > 3) {
- 				String adminMenuLink = "<a href=\"<%=request.getContextPath()%>/view/administratorMenu.jsp\">管理者メニュー</a>";
+ 				String adminMenuLink = "<a href=\"" + request.getContextPath() + "/view/administratorMenu.jsp\">管理者メニュー</a>";
  				request.setAttribute("adminMenuLink", adminMenuLink);
  			}
  			session.setAttribute("loginInfo", loginInfo);

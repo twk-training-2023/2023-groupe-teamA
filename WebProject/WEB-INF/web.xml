@@ -4738,5 +4738,13 @@
 		<url-pattern>/WebProject/LoginServlet</url-pattern>
 	</servlet-mapping>
 
+    <servlet>
+		<servlet-name>LogoutServletMapping</servlet-name>
+		<servlet-class>controller.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServletnMapping</servlet-name>
+		<url-pattern>/WebProject/LogoutServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>
