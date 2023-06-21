@@ -65,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 // 		「EmployeeDAO.searchToLogin」メソッドによりEmployeeテーブルを検索
  		LoginInfo loginInfo = edao.selectCheckPass(eb);
  		
+ 		
  		String url;
  		HttpSession session = request.getSession();
  		

@@ -122,17 +122,18 @@ public class ProfileDAO {
 	
 	
 	//社員情報 取得のセレクト
-	public ProfileDTO selectInfo(LoginInfo logininfo) {
+	public ProfileDTO selectInfo(LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ProfileDTO pdto = new ProfileDTO();
 		String sql = "select name, mail_address, password from employee where id = ?";
+		
 		try {
-			connection(logininfo.getPermissionLevel());
+			connection(loginInfo.getPermissionLevel());
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 			//idを任意の値に入れ替えたい
-			pstmt.setInt(1, logininfo.getEmployeeID());
+			pstmt.setInt(1, loginInfo.getEmployeeID());
 			// ③SQLを実行
 			rset = pstmt.executeQuery();
 			// ④検索結果の処理
@@ -161,16 +162,16 @@ public class ProfileDAO {
 
 
 	//社員プロフィール情報（自己紹介）取得のセレクト
-	public ProfileDTO selectAppeal(ProfileDTO pdto, LoginInfo logininfo) {
+	public ProfileDTO selectAppeal(ProfileDTO pdto, LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = "select appeal from profile where id = ?";
 		try {
-			connection(logininfo.getPermissionLevel());
+			connection(loginInfo.getPermissionLevel());
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 			//idを任意の値に入れ替えたい
-			pstmt.setInt(1, logininfo.getEmployeeID());
+			pstmt.setInt(1, loginInfo.getEmployeeID());
 			// ③SQLを実行
 			rset = pstmt.executeQuery();
 			// ④検索結果の処理
@@ -200,13 +201,13 @@ public class ProfileDAO {
 
 
 	//社員プロフィール情報（自己紹介）の更新　アップデート
-	public int selfUpdateAppeal(ProfileBean pb, LoginInfo logininfo) {
+	public int selfUpdateAppeal(ProfileBean pb, LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		int flg = 0;
 		String sql = "update profile set appeal = ? where id = ?;";
 		try {
-			connection(logininfo.getPermissionLevel());
+			connection(loginInfo.getPermissionLevel());
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 			//idを任意の値に入れ替えたい
