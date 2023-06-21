@@ -14,5 +14,6 @@
 		<%=session.getAttribute("employeeNumber")%></p>
 	<a href="SkillApplication.jsp">スキル申請ページへ</a>
 	<a href="contactAdministratorsFrom.jsp">管理者向け連絡入力フォームへ</a>
+	<a href="<%=request.getContextPath()%>/MyInfoUpDateMoveServlet">自己情報を更新</a>
 </body>
 </html>

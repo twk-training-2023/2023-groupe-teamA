@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class ProfileBean implements Serializable {
-
+	private int employeeID;
 	private String mail;//	社員情報テーブル
 	private String pass;//	社員情報テーブル
 	private String name;//	プロフィールテーブル
@@ -39,6 +39,14 @@ public class ProfileBean implements Serializable {
 
 	public String getAppeal() {
 		return appeal;
+	}
+
+	public int getEmployeeID() {
+		return employeeID;
+	}
+
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
 	}
 
 }
