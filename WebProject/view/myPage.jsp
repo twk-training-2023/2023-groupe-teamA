@@ -15,7 +15,8 @@
 		<%=loginInfo.getName()%>さん
 	</div>
 	 
-	<p>		
+	<p>	
+	    	
 		社員番号:<%=loginInfo.getEmployeeID()%>
 		<br>
 		${requestScope.loginInfo.employeeID}
