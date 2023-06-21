@@ -10,16 +10,16 @@ public class ProfileDTO implements Serializable {
 		list = new ArrayList<ProfileBean>();
 	}
 
-	public void add(ProfileBean Probn) {
-		list.add(Probn);
+	public void add(ProfileBean probn) {
+		list.add(probn);
 	}
-	
+
 	public ProfileBean get(int i) {
 		return list.get(i);
 	}
-	
+
 	public int size() {
 		return list.size();
 	}
-	
+
 }
