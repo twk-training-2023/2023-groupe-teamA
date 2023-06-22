@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ public class ContactAdministratorsDetailServlet extends HttpServlet {
      * Default constructor. 
      */
     public ContactAdministratorsDetailServlet() {
-        // TODO Auto-generated constructor stub
+        super();
     }
 
 	/**
@@ -33,8 +34,8 @@ public class ContactAdministratorsDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+	
 	}
 
 }

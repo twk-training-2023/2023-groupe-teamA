@@ -84,8 +84,8 @@ public class CommentAdminDAO {
 	    return cadto;
 	  }
 	
-	//未完成
-	public CommentAdminDTO insertCommentAdmin(CommentAdminBean caBean) { //入力処理
+	//完成
+	public CommentAdminDTO insertCommentAdmin(CommentAdminBean caBean, LoginInfo loginInfo) { //入力処理
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		CommentAdminDTO cadto = new CommentAdminDTO();
@@ -95,23 +95,13 @@ public class CommentAdminDAO {
 		      String sql = "insert into emp.comment_admin (id,name,title,content,posted_date) "//コメント番号、社員番号、社員名、タイトル、コンテンツ、日にち
 		      		+ "values ( ?, ?, ?, ?, current_timestamp ) ";
 		      
-		      //String sql = "insert into emp.comment_admin  "//コメント番号、社員番号、社員名、タイトル、コンテンツ、日にち
-			      		//+ "values (nextval('comment_admin_content_number_seq'::regclass),?, ?, ?, ?, current_timestamp ) ";
-		      
-		          LoginInfo li = new LoginInfo();
 		          pstmt = conn.prepareStatement(sql);
-		          //pstmt.setInt(1,li.getEmployeeID());
-		          //pstmt.setString(2,li.getName());
-		              System.out.println("DAO1"+caBean.getTitle());
-		          pstmt.setInt(1,3);
-		          pstmt.setString(2,"javatestman");
+		          pstmt.setInt(1,loginInfo.getEmployeeID());
+		          pstmt.setString(2,loginInfo.getName());
 		          pstmt.setString(3,caBean.getTitle());
 		          pstmt.setString(4,caBean.getContent());
-		              System.out.println(li.getName());
-		              System.out.println("DAO2"+caBean.getTitle());
-		          pstmt.executeUpdate();//sql実行 シーケンスへのアクセス拒否発生
-		          System.out.println("w");
-		          //cadto.add(caBean); //あってるか不明
+		          pstmt.executeUpdate();//sql実行
+		          //戻り値で判定未実装
 		        
 		   
 		}catch (Exception e) {

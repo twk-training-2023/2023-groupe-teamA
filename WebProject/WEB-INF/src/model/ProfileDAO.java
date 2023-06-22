@@ -1,6 +1,9 @@
 package model;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class ProfileDAO {
 
@@ -102,6 +105,131 @@ public class ProfileDAO {
 		}
 		disconnect();
 		return pdto;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//社員情報 取得のセレクト
+	public ProfileDTO selectInfo(LoginInfo loginInfo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ProfileDTO pdto = new ProfileDTO();
+		String sql = "select name, mail_address, password from employee where id = ?";
+		
+		try {
+			connection(loginInfo.getPermissionLevel());
+			// ②ステートメントを生成
+			pstmt = con.prepareStatement(sql);
+			//idを任意の値に入れ替えたい
+			pstmt.setInt(1, loginInfo.getEmployeeID());
+			// ③SQLを実行
+			rset = pstmt.executeQuery();
+			// ④検索結果の処理
+			while (rset.next()) {
+				ProfileBean pb = new ProfileBean();
+				pb.setName(rset.getString("name"));
+				pb.setMail(rset.getString("mail_address"));
+				pb.setPass(rset.getString("password"));
+				pdto.add(pb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null)
+					rset.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return pdto;
+	}
+
+
+	//社員プロフィール情報（自己紹介）取得のセレクト
+	public ProfileDTO selectAppeal(ProfileDTO pdto, LoginInfo loginInfo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "select appeal from profile where id = ?";
+		try {
+			connection(loginInfo.getPermissionLevel());
+			// ②ステートメントを生成
+			pstmt = con.prepareStatement(sql);
+			//idを任意の値に入れ替えたい
+			pstmt.setInt(1, loginInfo.getEmployeeID());
+			// ③SQLを実行
+			rset = pstmt.executeQuery();
+			// ④検索結果の処理
+			while (rset.next()) {
+				ProfileBean pb = pdto.get(0);
+				pdto = new ProfileDTO();
+				pb.setAppeal(rset.getString("appeal"));
+				pdto.add(pb);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null)
+					rset.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return pdto;
+	}
+
+	
+
+
+	//社員プロフィール情報（自己紹介）の更新　アップデート
+	public int selfUpdateAppeal(ProfileBean pb, LoginInfo loginInfo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int flg = 0;
+		String sql = "update profile set appeal = ? where id = ?;";
+		try {
+			connection(loginInfo.getPermissionLevel());
+			// ②ステートメントを生成
+			pstmt = con.prepareStatement(sql);
+			//idを任意の値に入れ替えたい
+			pstmt.setString(1, pb.getAppeal());
+			pstmt.setInt(2, pb.getEmployeeID());
+			// ③SQLを実行
+			flg = pstmt.executeUpdate();
+			// ④更新処理
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null)
+					rset.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return flg;
 	}
 
 	public void disconnect() {

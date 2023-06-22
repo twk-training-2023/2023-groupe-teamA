@@ -1,5 +1,4 @@
-/.gitkeep
-/SESSIONS.ser
+/org/
 /controller/
 /model/
-/org/
+/SESSIONS.ser
