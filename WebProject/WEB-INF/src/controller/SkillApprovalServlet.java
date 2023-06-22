@@ -36,6 +36,7 @@ public class SkillApprovalServlet extends HttpServlet {
 
 		if (loginInfo != null) {
 			int employeeID = loginInfo.getEmployeeID();
+
 			String name = loginInfo.getName();
 			String skill_detail = request.getParameter("skill_detail");
 			String skill_name = request.getParameter("skill_name");
@@ -47,6 +48,7 @@ public class SkillApprovalServlet extends HttpServlet {
 
 			SkillAppealDAO skillAppealDAO = new SkillAppealDAO();
 			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, skill_detail, name, skill_name, status);
+
 
 			if (success) {
 				// スキル申請成功時の処理

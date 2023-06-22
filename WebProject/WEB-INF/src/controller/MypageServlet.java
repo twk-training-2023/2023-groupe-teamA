@@ -22,6 +22,7 @@ public class MypageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		//ProfileBean pb = new ProfileBean();
 		HttpSession session = request.getSession();
 		//LoginInfo logininfo = (LoginInfo) session.getAttribute("logininfo");

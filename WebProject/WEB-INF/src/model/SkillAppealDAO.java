@@ -30,12 +30,15 @@ public class SkillAppealDAO {
 		}
 	}
 
+
 	public boolean insertSkillRequest(EmployeeBean employeeBean, String skill_detail, String name, String skill_name, int status) {
+
 		PreparedStatement pstmt = null;
 		boolean success = false;
 
 		try {
 			connection(1);
+
 
 			String sql = "INSERT INTO skill_appeal (id, detail, name, skill_name, status) VALUES (?, ?, ?, ?, ?);";
 			pstmt = con.prepareStatement(sql);
@@ -44,6 +47,7 @@ public class SkillAppealDAO {
 			pstmt.setString(3, employeeBean.getName());
 			pstmt.setString(4, skill_name);
 			pstmt.setInt(5, status);
+
 
 			int rowsAffected = pstmt.executeUpdate();
 

@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@page import="model.*"%>
+<<<<<<< HEAD
 	<%@page import="java.util.List" %>
+=======
+>>>>>>> 8ba77b9a7a47e6640ed965a9f1450d7329332494
 <jsp:useBean id="loginInfo" scope="session" class="model.LoginInfo" />
 <!DOCTYPE html>
 <html>

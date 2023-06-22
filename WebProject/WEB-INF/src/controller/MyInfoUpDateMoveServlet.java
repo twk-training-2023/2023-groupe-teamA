@@ -39,7 +39,7 @@ public class MyInfoUpDateMoveServlet extends HttpServlet {
  		response.setContentType("text/html; charset=UTF-8");
  		
  		HttpSession session = request.getSession();
- 		LoginInfo loginInfo = (LoginInfo)session.getAttribute("logininfo");
+ 		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
 
  		ProfileDAO pdao = new ProfileDAO();
  		
