@@ -7,28 +7,28 @@
 <title>社員追加</title>
 </head>
 <body>
-<table border="5">
+<table>
 <tr>
-<td colspan="5"></td>
+
 </tr>
 	<div>
 	<h1 style="text-align:center">社員追加</h1>
 	
-	<th style="text-align:center">社員番号：</th>
-				<td><input type="text" name="nunber" required></td>
+	<th>社員番号</th>
+				<td><input type="number" name="nunber" align="center" required></td>
 			</tr><br>
-	<th style="text-align:center">名前：</th>
+	<th>名前</th>
 				<td><input type="name" name="name" required></td>
 			</tr><br>
 			<tr>
-	<th style="text-align:center">メールアドレス：</th>
+	<th>メールアドレス</th>
 				<td><input type="email" name="mail" required></td>
 			</tr><br>
 			<tr>
-	<th style="text-align:center">パスワード：</th>
+	<th>パスワード</th>
 				<td><input type="password" name="password" required></td>
 			<tr><br>
-	<th style="text-align:center">権限レベル：</th>
+	<th>権限レベル</th>
 				<td><input type="level" name="level" required></td>
 			</tr></div>
 		
