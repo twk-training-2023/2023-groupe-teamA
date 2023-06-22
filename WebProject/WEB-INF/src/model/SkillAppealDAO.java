@@ -31,23 +31,21 @@ public class SkillAppealDAO {
 	}
 
 
-	public boolean insertSkillRequest(EmployeeBean employeeBean, String skill_detail, String name, String skill_name, int status) {
-
+	public boolean insertSkillRequest(EmployeeBean employeeBean, String name, String skill_name, String skill_detail, int status) {
+		
 		PreparedStatement pstmt = null;
 		boolean success = false;
 
 		try {
 			connection(1);
 
-
-			String sql = "INSERT INTO skill_appeal (id, detail, name, skill_name, status) VALUES (?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO skill_appeal VALUES (?, ?, ?, ?, ?, current_timestamp);";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, employeeBean.getEmployeeID());
-			pstmt.setString(2, skill_detail);
-			pstmt.setString(3, employeeBean.getName());
-			pstmt.setString(4, skill_name);
-			pstmt.setInt(5, status);
-
+			pstmt.setString(2, employeeBean.getName());
+			pstmt.setString(3, skill_name);
+			pstmt.setString(4, skill_detail);			
+			pstmt.setInt(5, status);					
 
 			int rowsAffected = pstmt.executeUpdate();
 

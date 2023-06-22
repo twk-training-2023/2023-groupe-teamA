@@ -47,7 +47,7 @@ public class SkillApprovalServlet extends HttpServlet {
 			employeeBean.setName(name);
 
 			SkillAppealDAO skillAppealDAO = new SkillAppealDAO();
-			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, skill_detail, name, skill_name, status);
+			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, name, skill_name, skill_detail, status);			
 
 
 			if (success) {

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginInfo;
+import model.ProfileBean;
+import model.ProfileDAO;
+import model.ProfileDTO;
 
 @WebServlet("/MypageServlet")
 public class MypageServlet extends HttpServlet {
@@ -23,19 +26,17 @@ public class MypageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//ProfileBean pb = new ProfileBean();
+		ProfileBean pb = new ProfileBean();
 		HttpSession session = request.getSession();
-		//LoginInfo logininfo = (LoginInfo) session.getAttribute("logininfo");
-		//int employeeID = logininfo.getEmployeeID();
- 		//pb.setEmployeeID(employeeID);
+		LoginInfo logininfo = (LoginInfo) session.getAttribute("loginInfo");
+		int employeeID = logininfo.getEmployeeID();
+ 		pb.setEmployeeID(employeeID);
 		
-		//ProfileDAO pdao = new ProfileDAO();
+		ProfileDAO pdao = new ProfileDAO();
 		
-		//ProfileDTO profiledto = pdao.selectAppeal(pb);
+		ProfileDTO profiledto = pdao.selectInfo(pb);
 		
-		//request.setAttribute("profiledto", profiledto);
-		
-		//桃崎くんがProfileBeanに修正を入れてくれるまでは放置。
+		request.setAttribute("profiledto", profiledto);
 		
 						
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
