@@ -6,7 +6,7 @@ public class CommentAdminBean implements Serializable {
 	public int employeeID;
 	public String content;
 	public String changeDay;
-	public String check;
+	public String name;
 	public String title;
 	public int commentNumber;
 
@@ -17,6 +17,7 @@ public class CommentAdminBean implements Serializable {
 	public int getEmployeeID(){
 		return employeeID;
 	}
+	
 	
 	public void setContent(String content){
 		this.content = content;
@@ -34,12 +35,12 @@ public class CommentAdminBean implements Serializable {
 		return changeDay;
 	}
 	
-	public void setCheck(String check){
-		this.check = check;
+	public void setName(String name){
+		this.name = name;
 	}
 	
-	public String getCheck(){
-		return check;
+	public String getName(){
+		return name;
 	}
 	
 	public void setTitle(String title){
