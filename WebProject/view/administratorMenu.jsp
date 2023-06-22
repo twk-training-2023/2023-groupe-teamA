@@ -7,9 +7,11 @@
 <title>管理者用メニュー</title>
 </head>
 <body>
-	<h1>管理者用メニュー<h1>
-	<a href="listEmployees.jsp">・社員一覧ページへ</a><br><br>
-	<a href="ContactAdministratorsList.jsp">・連絡一覧ページへ</a><br><br>
-	<a href="skillApproval.jsp">・スキル承認ページへ</a>
+	<h2>管理者用メニュー</h2>
+	<div>
+	<a href="<%=request.getContextPath()%>/EmployeesListServlet">社員一覧ページへ</a><br>
+	<a href="<%=request.getContextPath()%>/ContactAdministratorsFromServlet">連絡一覧ページへ</a><br>
+	<a href="<%=request.getContextPath()%>/SkillApprovalServlet">スキル承認ページへ</a>
+	</div>
 </body>
 </html>

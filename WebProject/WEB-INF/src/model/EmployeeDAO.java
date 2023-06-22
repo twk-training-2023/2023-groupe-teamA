@@ -77,6 +77,89 @@ public class EmployeeDAO {
 		return logininfo;
 	}
 	
+	//社員一覧取得処理
+	public EmployeeDTO selectAll() {
+
+        PreparedStatement pstmt = null;
+
+        ResultSet rset = null;
+
+        EmployeeDTO edto = new EmployeeDTO();
+
+        try {
+
+            // ①DBに接続    
+
+            connection(1);
+
+            
+
+            String sql = "select id, mail_address, name, permission_level from employee;";
+
+            pstmt = con.prepareStatement(sql);
+
+ 
+
+            
+
+            // ③SQLを実行
+
+            rset = pstmt.executeQuery();
+
+ 
+
+            // ④検索結果の処理
+
+            while (rset.next()) {
+
+                EmployeeBean eb = new EmployeeBean();
+
+                eb.setEmployeeID(rset.getInt("id"));
+                
+                eb.setMailaddress(rset.getString("mail_address"));
+              
+                eb.setName(rset.getString("name"));
+
+                eb.setPermissionLevel(rset.getInt("permission_level"));
+
+                edto.add(eb);
+
+            }
+
+ 
+
+        } catch (Exception e) {
+
+            // TODO: handle exception
+
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+
+                if (rset != null)
+
+                    rset.close();
+
+                if (pstmt != null)
+
+                    pstmt.close();
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+
+            }
+
+        }
+
+        disconnect();
+
+        return edto;
+
+    }
+	
 	
 	  
 //	ディスコネクトメソッド   データベースからの接続を終了する
