@@ -35,6 +35,7 @@ public class ContactAdministratorsListServlet extends HttpServlet {
 		request.setAttribute("commentAdmin",caDTO);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/contactAdministratorsList.jsp");
 	    rd.forward(request, response);
+	    
 	}
 
 	
