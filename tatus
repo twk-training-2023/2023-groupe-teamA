@@ -1,0 +1,99 @@
+* [33m7700a1c[m[33m ([m[1;36mHEAD -> [m[1;32mwork_momo[m[33m, [m[1;31morigin/work_momo[m[33m)[m 一時更新
+[31m|[m *   [33mdfa57b8[m[33m ([m[1;31morigin/work_watanabe[m[33m)[m 管理者連絡入力処理の追加 マイページ→管理者向け連絡画面の遷移 本文、タイトルの入力後送信ボタンでcomment_adminテーブルにデータを追加 を確認お願いします。
+[31m|[m [32m|[m[33m\[m  
+[31m|[m [32m|[m *   [33m8ba77b9[m Merge pull request #15 from twk-training-2023/work_momo
+[31m|[m [32m|[m [34m|[m[31m\[m  
+[31m|[m [32m|[m[31m_[m[34m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m [34m|[m   
+* [32m|[m [34m|[m [33m1f4f8b1[m 唐澤さんのブランチを取得して競合している内容を修正 マイページから自己情報更新ページまでの遷移の部分でエラーが起きていた箇所について修正を行いました。 一応一通り動くかの確認をよろしくお願いします。
+* [32m|[m [34m|[m   [33mead51b8[m 唐澤さんのブランチを取得して競合している内容を修正しました。
+[36m|[m[1;31m\[m [32m\[m [34m\[m  
+[36m|[m * [32m|[m [34m|[m [33mbdb3056[m[33m ([m[1;31morigin/work_karasawa[m[33m)[m 0621進捗2
+[36m|[m * [32m|[m [34m|[m [33mcc67766[m 0621進捗
+[36m|[m [34m|[m [32m|[m[34m/[m  
+[36m|[m [34m|[m[34m/[m[32m|[m   
+* [34m/[m [32m|[m [33m127aec0[m 3ファイルの作成 myInfoUpdate.jsp MyInfoUpDateMoveServlet.jsp MyInfoUpDateServlet.jsp
+[34m|[m[34m/[m [32m/[m  
+[34m|[m * [33m126338b[m 退避
+[34m|[m[34m/[m  
+*   [33mfe6baf8[m[33m ([m[1;31morigin/main[m[33m)[m Merge pull request #13 from twk-training-2023/work_yuukishi
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33ma680137[m[33m ([m[1;31morigin/work_yuukishi[m[33m)[m プロフィール関連をコミット
+[1;32m|[m * [33m40e7bf8[m コミットしました。
+* [1;33m|[m [33mfe775bd[m[33m ([m[1;32mmain[m[33m)[m Merge pull request #11 from twk-training-2023/work_yuukishi
+[1;34m|[m[1;33m\[m[1;33m|[m 
+[1;34m|[m * [33m0adb656[m コミット 石井
+[1;34m|[m * [33m1f36bc9[m 石井　コミット
+* [1;35m|[m   [33m6454fa0[m Merge pull request #10 from twk-training-2023/work_ray
+[1;35m|[m[31m\[m [1;35m\[m  
+[1;35m|[m [31m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[31m|[m   
+[1;35m|[m * [33m7ab0859[m ray zommit
+[1;35m|[m[1;35m/[m  
+*   [33m4dfff0b[m[33m ([m[1;32mmaster[m[33m)[m Merge pull request #9 from twk-training-2023/work_watanabe
+[32m|[m[33m\[m  
+[32m|[m * [33mfc95784[m watanabe commit
+[32m|[m[32m/[m  
+*   [33mb22b92f[m Merge pull request #8 from twk-training-2023/work_momo
+[34m|[m[35m\[m  
+[34m|[m * [33mccbe4e3[m ログアウト処理の追加・メニュー画面の修正
+[34m|[m[34m/[m  
+*   [33m857e92b[m Merge pull request #7 from twk-training-2023/work_momo
+[36m|[m[1;31m\[m  
+[36m|[m *   [33m049e2c7[m Merge remote-tracking branch 'origin/main' into work_momo
+[36m|[m [1;32m|[m[36m\[m  
+[36m|[m [1;32m|[m[36m/[m  
+[36m|[m[36m/[m[1;32m|[m   
+* [1;32m|[m   [33m3896e02[m Merge pull request #5 from twk-training-2023/work_karasawa
+[1;34m|[m[1;35m\[m [1;32m\[m  
+[1;34m|[m * [1;32m|[m [33m4be56f4[m 14時進捗
+[1;34m|[m * [1;32m|[m [33m85bfda1[m 0619の13時時点での進捗兼Pushテスト
+[1;34m|[m [1;35m|[m * [33m5738632[m Merge branch 'work_karasawa' of ssh://git@github.com/twk-training-2023/2023-groupe-teamA into work_momo
+[1;34m|[m [1;35m|[m * [33mf03545d[m ログインからメインメニューまでを追加しました。
+[1;34m|[m [1;35m|[m *   [33m115fff9[m Merge branch 'main' of ssh://git@github.com/twk-training-2023/2023-groupe-teamA into main
+[1;34m|[m [1;35m|[m [1;36m|[m[1;34m\[m  
+[1;34m|[m [1;35m|[m[1;34m_[m[1;36m|[m[1;34m/[m  
+[1;34m|[m[1;34m/[m[1;35m|[m [1;36m|[m   
+* [1;35m|[m [1;36m|[m [33mcfc5f6a[m Merge pull request #3 from twk-training-2023/work_karasawa
+[32m|[m[1;35m\[m[1;35m|[m [1;36m|[m 
+[32m|[m [1;35m|[m * [33mc7991e9[m クラス名の修正を行いました。
+[32m|[m [1;35m|[m * [33m0e6431a[m Merge branch 'work_karasawa' of ssh://git@github.com/twk-training-2023/2023-groupe-teamA into main
+[32m|[m [1;35m|[m[32m/[m[1;35m|[m 
+[32m|[m[32m/[m[1;35m|[m[1;35m/[m  
+[32m|[m * [33mdf68822[m プロジェクト仮投稿
+* [35m|[m [33ma6c4085[m delete test.jsp
+[35m|[m[35m/[m  
+* [33mc78e743[m test
+* [33m308637e[m サンプル
+* [33m8028e57[m add test.jsp
+* [33m660aa52[m update document
+*   [33me75280e[m Merge branch 'main' of https://github.com/twk-training-2023/2023-groupe-teamA
+[36m|[m[1;31m\[m  
+[36m|[m *   [33m6605c33[m Merge branch 'main' of https://github.com/twk-training-2023/2023-groupe-teamA
+[36m|[m [1;32m|[m[1;33m\[m  
+[36m|[m [1;32m|[m * [33m4ac70f9[m Create README.md
+[36m|[m * [1;33m|[m [33m1549e1a[m 画面レイアウト図1~10を更新
+[36m|[m * [1;33m|[m [33m16c0169[m 画面レイアウト図1~10を更新
+* [1;33m|[m [1;33m|[m [33mf266950[m add Tomcat project name is WebProject
+[1;33m|[m [1;33m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;33m|[m   
+* [1;33m|[m [33m0e7c989[m add documentsFile  Created date 20230613
+* [1;33m|[m [33m9499114[m delete docmentsFile
+* [1;33m|[m [33m3752786[m add Design documents
+[1;33m|[m[1;33m/[m  
+*   [33m452f1f6[m ttttest
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33m6891f32[m テスト
+* [1;35m|[m [33m7ad6948[m test dedede
+[1;35m|[m[1;35m/[m  
+* [33m450c2fc[m test returns
+* [33m4368e14[m test returns
+* [33m9725bb1[m update menbertext
+* [33m6d043d4[m test dosue
+*   [33m9603996[m Merge pull request #1 from twk-training-2023/master
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33m885de85[m[33m ([m[1;31morigin/master[m[33m)[m aaa
+* [31m|[m [33me6c5f87[m add watanabe
+* [31m|[m [33m08bc364[m aaa
+[31m|[m[31m/[m  
+* [33m098fb25[m add testHowtoGitFolder/menber.txt

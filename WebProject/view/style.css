@@ -1,0 +1,47 @@
+@charset "UTF-8";
+body {
+	font-family: BIZ UDPゴシック;
+	text-align: center;
+}
+
+hr {
+	border: 0;
+}
+
+.contact-form{
+	width:400px;
+	margin:0 auto;
+}
+.contact-form table, .contact-form .submit-btn{
+	width:100%;
+    margin-bottom:15px;
+}
+
+.contact-form th{
+	padding:8px 0;
+ 	vertical-align:top;
+	text-align:right;
+	width:40%;
+}
+.contact-form td{
+	text-align:left;
+	width:60%;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+}
+
+}
+
+.errorMsg {
+	color: red;
+}
