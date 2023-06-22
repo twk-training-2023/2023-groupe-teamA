@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.EmployeeBean;
-import model.EmployeeDAO;
 import model.LoginInfo;
 import model.SkillAppealDAO;
 
@@ -36,13 +36,19 @@ public class SkillApprovalServlet extends HttpServlet {
 
 		if (loginInfo != null) {
 			int employeeID = loginInfo.getEmployeeID();
+
+			String name = loginInfo.getName();
 			String skill_detail = request.getParameter("skill_detail");
+			String skill_name = request.getParameter("skill_name");
+			int status = 1;
 
 			EmployeeBean employeeBean = new EmployeeBean();
 			employeeBean.setEmployeeID(employeeID);
+			employeeBean.setName(name);
 
 			SkillAppealDAO skillAppealDAO = new SkillAppealDAO();
-			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, skill_detail);
+			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, name, skill_name, skill_detail, status);			
+
 
 			if (success) {
 				// スキル申請成功時の処理

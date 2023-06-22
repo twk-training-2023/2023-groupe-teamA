@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.LoginInfo;
+import model.ProfileBean;
+import model.ProfileDAO;
+import model.ProfileDTO;
 
 @WebServlet("/MypageServlet")
 public class MypageServlet extends HttpServlet {
@@ -22,8 +25,22 @@ public class MypageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		ProfileBean pb = new ProfileBean();
 		HttpSession session = request.getSession();
+		LoginInfo logininfo = (LoginInfo) session.getAttribute("loginInfo");
+		int employeeID = logininfo.getEmployeeID();
+ 		pb.setEmployeeID(employeeID);
+		
+		ProfileDAO pdao = new ProfileDAO();
+		
+		ProfileDTO profiledto = pdao.selectInfo(pb);
+		
+		request.setAttribute("profiledto", profiledto);
+		
+						
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+		
 
 		if (loginInfo != null) {
 			// ログイン情報がセッションに保存されている場合はマイページにフォワード
