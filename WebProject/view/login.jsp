@@ -22,6 +22,6 @@
 		</table><br>
 		<input type="submit" value="ログイン">
 	</form>
-	<p><font color="red">${requestScope.errorMsg }</font></p>
+	<p class="errorMsg">${requestScope.errorMsg }</p>
 </body>
 </html>

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body {
 	font-family: BIZ UDPゴシック;
 	text-align: center;
@@ -7,7 +6,6 @@ body {
 
 hr {
 	border: 0;
-	color: br
 }
 
 .contact-form{
@@ -42,6 +40,8 @@ hr {
     right: 0px;
 }
 
+}
 
-
-
+.errorMsg {
+	color: red;
+}
