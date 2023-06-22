@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>社員管理表</title>
-<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h2>自己情報更新</h2>
@@ -36,7 +35,6 @@
 			</tr>
 		</table>
 		<br> <input type="submit" value="更新">
-			<p class="errorMsg">${requestScope.errorMsg }</p>
 	</form>
 </body>
 </html>

@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>社員管理表</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<h2>ログイン</h2>
@@ -22,6 +21,6 @@
 		</table><br>
 		<input type="submit" value="ログイン">
 	</form>
-	<p class="errorMsg">${requestScope.errorMsg }</p>
+	<p><font color="red">${requestScope.errorMsg }</font></p>
 </body>
 </html>
