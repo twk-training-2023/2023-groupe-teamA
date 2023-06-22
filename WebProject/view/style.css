@@ -1,0 +1,13 @@
+@charset "UTF-8";
+body {
+	font-family: BIZ UDPゴシック;
+	text-align: center;
+}
+
+hr {
+	border: 0;
+}
+
+.errorMsg {
+	color: red;
+}
