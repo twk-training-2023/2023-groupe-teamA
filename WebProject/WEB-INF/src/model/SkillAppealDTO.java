@@ -10,8 +10,8 @@ public class SkillAppealDTO {
         skillList = new ArrayList<SkillAppealBean>();
     }
 
-    public void addSkill(SkillAppealBean poke) {
-    	skillList.add(poke);
+    public void addSkill(SkillAppealBean sab) {
+    	skillList.add(sab);
     }
 
     public SkillAppealBean getSkill(int i) {
