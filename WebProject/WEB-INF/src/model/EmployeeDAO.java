@@ -161,6 +161,40 @@ public class EmployeeDAO {
     }
 	
 	
+	//社員情報の更新　アップデート
+	public int selfUpdateInfo(EmployeeBean eb, LoginInfo loginInfo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int flg = 0;
+		String sql = "update employee set mail_address = ?, password = ? where id = ?;";
+		try {
+			connection(loginInfo.getPermissionLevel());
+			// ②ステートメントを生成
+			pstmt = con.prepareStatement(sql);
+			//idを任意の値に入れ替えたい
+			pstmt.setString(1, eb.getMailaddress());
+			pstmt.setString(2, eb.getPassword());
+			pstmt.setInt(3, eb.getEmployeeID());
+			// ③SQLを実行
+			flg = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null)
+					rset.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return flg;
+	}
+	
+	
+	
 	  
 //	ディスコネクトメソッド   データベースからの接続を終了する
 	public void disconnect() {
