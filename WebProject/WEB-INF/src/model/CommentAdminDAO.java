@@ -21,7 +21,7 @@ public class CommentAdminDAO {
 	private Connection conn = null;
 
 
-
+	//DB接続メソッド
 	public void connect(int permissionLevel) {
 		try {
 			Class.forName(DRIVE);
@@ -34,10 +34,9 @@ public class CommentAdminDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	//DB切断メソッド
 	public void disconnect() {
 	    try {
-	      // ⑤DBを切断
 	      if (conn != null)
 	        conn.close();
 	    } catch (Exception e) {
@@ -45,20 +44,18 @@ public class CommentAdminDAO {
 	    }
 	  }
 	
-	//未完成
-	public CommentAdminDTO selectAllCommentAdmin(CommentAdminBean caBean) { //一覧表示
+	//管理者向け連絡一覧表示メソッド
+	public CommentAdminDTO selectAllCommentAdmin(CommentAdminBean caBean) { 
 		Statement stmt = null;
 		ResultSet rs = null;
 		CommentAdminDTO cadto = new CommentAdminDTO();
 		try {
 		      connect(4);
 		      stmt = conn.createStatement();
-		      String sql = "select content_number,id,name,title,posted_date "//
+		      String sql = "select content_number,id,name,title,posted_date "
 		      		+ " from comment_admin";
 		      rs = stmt.executeQuery(sql);
 		      while (rs.next()) {
-		          
-		          //LoginInfo li = new LoginInfo();
 		          caBean.setCommentNumber(rs.getInt(1));
 		          caBean.setEmployeeID(rs.getInt(2));
 		          caBean.setName(rs.getString(3));
@@ -84,7 +81,7 @@ public class CommentAdminDAO {
 	    return cadto;
 	  }
 	
-	//完成
+	//管理者向け連絡入力処理メソッド
 	public CommentAdminDTO insertCommentAdmin(CommentAdminBean caBean, LoginInfo loginInfo) { //入力処理
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
