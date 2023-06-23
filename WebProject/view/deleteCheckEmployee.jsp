@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>社員削除確認画面</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<p>・社員名の一覧</p>
+	<%@include file="header-navi.jsp" %>
 
 <br>
 <p>以上の社員を削除しますか？</p>

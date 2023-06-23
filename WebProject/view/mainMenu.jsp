@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>メインメニュー</h2>
-	<%@include file="header-navi-general.jsp" %>
+	<%@include file="header-navi.jsp" %>
 	<a href="<%=request.getContextPath()%>/MypageServlet">マイページ</a><br>
 	<%
 	if (loginInfo.getPermissionLevel() > 3){

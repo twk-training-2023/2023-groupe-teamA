@@ -2,14 +2,15 @@
 body {
 	font-family: BIZ UDPゴシック;
 	text-align: center;
+	font-size: 32px;
 }
 
 hr {
-	border: 0;
+	border: 1;
+	color: black;
 }
 
 .contact-form{
-	width:400px;
 	margin:0 auto;
 }
 .contact-form table, .contact-form .submit-btn{
@@ -21,11 +22,12 @@ hr {
 	padding:8px 0;
  	vertical-align:top;
 	text-align:right;
-	width:40%;
+	width:50%;
 }
 .contact-form td{
+	vertical-align:top;
 	text-align:left;
-	width:60%;
+	width:50%;
 }
 
 .parent {

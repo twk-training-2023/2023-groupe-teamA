@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="model.*"%>
 <%@page import="java.util.List"%>
-<jsp:useBean id="loginInfo" scope="session" class="model.LoginInfo" />
-<jsp:useBean id="profiledto" scope="request" class="model.ProfileDTO" />
+<jsp:useBean id="pdto" scope="request" class="model.ProfileDTO" />
 
 <!DOCTYPE html>
 <html>
 <head>
 <title>マイページ</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<h1>マイページ</h1>
+	<%@include file="header-navi.jsp" %>
 	<p>ようこそ、<%=loginInfo.getName()%>さん！</p>
 	
-	<p><%ProfileBean pb = profiledto.get(0); %>
+	<p><%ProfileBean pb = pdto.get(0); %>
 	   <%=pb.getName() %>
 	   <br>
 	   <%=pb.getMail() %>		    
