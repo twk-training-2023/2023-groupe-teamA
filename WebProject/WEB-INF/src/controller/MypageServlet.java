@@ -36,7 +36,7 @@ public class MypageServlet extends HttpServlet {
 		
 		ProfileDTO profiledto = pdao.selectInfo(pb);
 		
-		request.setAttribute("profiledto", profiledto);
+		request.setAttribute("pdto", profiledto);
 		
 						
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");

@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>社員追加</title>
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<h1>社員追加</h1>
+	<%@include file="header-navi.jsp" %>
 	<th>名前：</th>
 				<td><input type="email" name="mail" required></td>
 			</tr><br>

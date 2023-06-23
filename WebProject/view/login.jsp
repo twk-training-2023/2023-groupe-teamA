@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>ログイン</h2>
-	<form method="post" action="<%=request.getContextPath()%>/LoginServlet">
+	<form method="post" action="<%=request.getContextPath()%>/LoginServlet"  class="contact-form">
 		<table>
 			<tr>
 				<th>メールアドレス：</th>

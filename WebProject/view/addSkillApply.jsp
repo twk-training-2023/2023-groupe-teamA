@@ -4,10 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>スキル申請フォーム</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<h1>スキル申請フォーム</h1>
+	<%@include file="header-navi.jsp" %>
 	<form method="post" action="<%=request.getContextPath()%>/SkillApprovalServlet">
 		<table>
 			<tr>

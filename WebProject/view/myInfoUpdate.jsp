@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="model.*"%>
 <jsp:useBean id="pdto" scope="request" class="model.ProfileDTO" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>社員管理表</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<h2>自己情報更新</h2>
+	<%@include file="header-navi.jsp" %>
 	<%
 	ProfileBean pb = pdto.get(0);
 	%>

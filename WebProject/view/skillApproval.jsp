@@ -5,10 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>スキル承認ページ</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
 	<p>スキルアピール一覧</p>
-
+	<%@include file="header-navi.jsp" %>
 	<table border="1" width="1000" height="500">
 		<tr>
 			<th>名前</th>
