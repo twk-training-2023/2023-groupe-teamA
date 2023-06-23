@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import model.CommentAdminBean;
 import model.CommentAdminDAO;
 import model.LoginInfo;
+import model.ProfileBean;
+import model.ProfileDAO;
+import model.ProfileDTO;
 
 /**
  * Servlet implementation class ContactAdministratorsFromServlet
@@ -32,6 +35,7 @@ public class ContactAdministratorsFromServlet extends HttpServlet {
 		
 		CommentAdminBean caBean = new CommentAdminBean();
 		
+		
 		String title = request.getParameter("title");
 	    caBean.setTitle(title);
 		String content =request.getParameter("content");
@@ -40,6 +44,15 @@ public class ContactAdministratorsFromServlet extends HttpServlet {
 		
 		CommentAdminDAO caDAO = new CommentAdminDAO();
 		caDAO.insertCommentAdmin(caBean,loginInfo);
+		
+		//マイページ遷移
+		ProfileBean pb = new ProfileBean();
+		LoginInfo logininfo = (LoginInfo) session.getAttribute("loginInfo");
+		int employeeID = logininfo.getEmployeeID();
+ 		pb.setEmployeeID(employeeID);
+		ProfileDAO pdao = new ProfileDAO();
+		ProfileDTO profiledto = pdao.selectInfo(pb);
+		request.setAttribute("pdto", profiledto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("/view/myPage.jsp");
 		dis.forward(request,response);
