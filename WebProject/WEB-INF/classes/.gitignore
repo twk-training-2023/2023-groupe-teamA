@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 /.gitkeep
 /controller/
 /model/
 /org/
+=======
+/org/
+/model/
+/controller/
+>>>>>>> 82c8817698c1c9322f9fb78c56783037f7a2dfbe
 /SESSIONS.ser

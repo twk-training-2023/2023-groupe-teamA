@@ -4,15 +4,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>社員追加</title>
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
 </head>
 <body>
+<<<<<<< HEAD
 
 <tr>
 
 </tr>
 	<div>
 	<h1 style="text-align:center">社員追加</h1>
+=======
+	<h1>社員追加</h1>
+	<%@include file="header-navi.jsp" %>
+	<th>名前：</th>
+				<td><input type="email" name="mail" required></td>
+			</tr><br>
+			<tr>
+	<th>メールアドレス：</th>
+				<td><input type="email" name="mail" required></td>
+			</tr><br>
+			<tr>
+	<th>パスワード：</th>
+				<td><input type="password" name="password" required></td>
+			</tr><br><br>
+>>>>>>> 82c8817698c1c9322f9fb78c56783037f7a2dfbe
 	
 	 <form method="post" action="<%=request.getContextPath()%>/AddEmployeeServlet">
         <label>社員番号</label><input type="number" name="number"><br>

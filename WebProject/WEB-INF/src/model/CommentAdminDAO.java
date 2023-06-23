@@ -45,26 +45,29 @@ public class CommentAdminDAO {
 	  }
 	
 	//管理者向け連絡一覧表示メソッド
-	public CommentAdminDTO selectAllCommentAdmin(CommentAdminBean caBean) { 
+	public CommentAdminDTO selectAllCommentAdmin() { 
 		Statement stmt = null;
 		ResultSet rs = null;
-		CommentAdminDTO cadto = new CommentAdminDTO();
+		CommentAdminDTO caDTO = new CommentAdminDTO();
 		try {
 		      connect(4);
 		      stmt = conn.createStatement();
-		      String sql = "select content_number,id,name,title,posted_date "
-		      		+ " from comment_admin";
+		      String sql = "select content_number,id,name,content,title,posted_date "
+		      		+ " from comment_admin;";
 		      rs = stmt.executeQuery(sql);
 		      while (rs.next()) {
-		          caBean.setCommentNumber(rs.getInt(1));
-		          caBean.setEmployeeID(rs.getInt(2));
-		          caBean.setName(rs.getString(3));
-		          caBean.setTitle(rs.getString(4));
-		          caBean.setChangeDay(rs.getString(5));
-		      
-		          cadto.add(caBean); 
-		        }
-		   
+		    	  CommentAdminBean caBean = new CommentAdminBean();
+		          caBean.setCommentNumber(rs.getInt("content_number"));
+		          caBean.setEmployeeID(rs.getInt("id"));
+		          caBean.setName(rs.getString("name"));
+		          caBean.setTitle(rs.getString("title"));
+		          caBean.setContent(rs.getString("content"));
+		          caBean.setChangeDay(rs.getString("posted_date"));
+		          
+		          
+		          caDTO.add(caBean); 
+		          
+		      }
 		}catch (Exception e) {
 		      e.printStackTrace();
 	    } finally {
@@ -78,7 +81,7 @@ public class CommentAdminDAO {
 	      }
 	    }
 	    disconnect();
-	    return cadto;
+	    return caDTO;
 	  }
 	
 	//管理者向け連絡入力処理メソッド

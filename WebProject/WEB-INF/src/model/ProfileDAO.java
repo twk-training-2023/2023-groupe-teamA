@@ -34,24 +34,23 @@ public class ProfileDAO {
 	}
 
 	//社員情報取得のセレクト
-	public ProfileDTO selectInfo(EmployeeBean eb) {
+	public ProfileDTO selectInfo(ProfileBean pb) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ProfileDTO pdto = new ProfileDTO();
-		String sql = "select mail_address,password,name from emp.employee where mail_address = ?";
+		String sql = "select mail_address,name from emp.employee where id = ?";
 		try {
 			connection(1);
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 			//idを任意の値に入れ替えたい
-			pstmt.setString(1, eb.getMailaddress());
+			pstmt.setInt(1, pb.getEmployeeID());
 			// ③SQLを実行
-			rs = pstmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			// ④検索結果の処理
 			while (rs.next()) {
 				ProfileBean probn = new ProfileBean();
-				probn.setMail(rs.getString("mail_address"));
-				probn.setPass(rs.getString("password"));
+				probn.setMail(rs.getString("mail_address"));				
 				probn.setName(rs.getString("name"));
 				pdto.add(probn);
 			}
@@ -72,7 +71,7 @@ public class ProfileDAO {
 	}
 
 	//社員プロフィール情報（自己紹介）取得のセレクト
-	public ProfileDTO selectAppeal(EmployeeBean eb) {
+	public ProfileDTO selectAppeal(ProfileBean pb) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ProfileDTO pdto = new ProfileDTO();
@@ -82,9 +81,9 @@ public class ProfileDAO {
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 			//idを任意の値に入れ替えたい
-			pstmt.setString(1, eb.getMailaddress());
+			pstmt.setInt(1, pb.getEmployeeID());
 			// ③SQLを実行
-			rs = pstmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			// ④検索結果の処理
 			while (rs.next()) {
 				ProfileBean probn = new ProfileBean();

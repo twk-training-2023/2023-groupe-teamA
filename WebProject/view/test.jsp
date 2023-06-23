@@ -7,7 +7,9 @@
 <title>teststetsts</title>
 </head>
 <body>
-<a href ="/WebProject/ContactAdministratorsListServlet">てｓと</a>
+<form method="post" name="selectAllAdmin" action="/WebProject/ContactAdministratorsListServlet" >
+<input type="submit" value="てｓととおお">
+</form>
 
 </body>
 </html>

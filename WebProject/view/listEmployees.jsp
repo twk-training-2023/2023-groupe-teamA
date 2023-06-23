@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>社員一覧</title>
 </head>
 <body>
@@ -18,6 +19,13 @@
 	<input type = "submit" value = "追加">
 </form>
 	<button>更新</button>
+=======
+<title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/view/style.css">
+</head>
+<body>
+<%@include file="header-navi.jsp" %>
+>>>>>>> 82c8817698c1c9322f9fb78c56783037f7a2dfbe
 
 	<button>削除</button>
 </div><br>
