@@ -52,7 +52,7 @@ public class ContactAdministratorsFromServlet extends HttpServlet {
  		pb.setEmployeeID(employeeID);
 		ProfileDAO pdao = new ProfileDAO();
 		ProfileDTO profiledto = pdao.selectInfo(pb);
-		request.setAttribute("profiledto", profiledto);
+		request.setAttribute("pdto", profiledto);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("/view/myPage.jsp");
 		dis.forward(request,response);
