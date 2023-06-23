@@ -18,7 +18,7 @@ public class EmployeeDAO {
 	private static final String GENERAL_PASS = generalConPara.getPass();
 	private Connection con = null;
 
-//	コネクトメソッド    データベースに接続する
+	//	コネクトメソッド    データベースに接続する
 	private void connection(int permissionLevel) {
 		try {
 			Class.forName(RDB_DRIVE);
@@ -31,9 +31,9 @@ public class EmployeeDAO {
 			throw new IllegalStateException(e);
 		}
 	}
-	
-//	ログイン認証メソッド
-//	ログインの際に入力されたメールアドレスとパスワードをデータベースで検索してヒットした場合に社員番号、名前、権限レベルを格納したLoginInfoを返す
+
+	//	ログイン認証メソッド
+	//	ログインの際に入力されたメールアドレスとパスワードをデータベースで検索してヒットした場合に社員番号、名前、権限レベルを格納したLoginInfoを返す
 	public LoginInfo selectCheckPass(EmployeeBean eb) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -41,14 +41,14 @@ public class EmployeeDAO {
 		try {
 			// ①DBに接続	
 			connection(1);
-			
+
 			String sql = "select id, name, permission_level from employee where mail_address = ? and password = ?;";
 			pstmt = con.prepareStatement(sql);
 
 
 			pstmt.setString(1, eb.getMailaddress());
 			pstmt.setString(2, eb.getPassword());
-			
+
 			// ③SQLを実行
 			rset = pstmt.executeQuery();
 
@@ -76,91 +76,82 @@ public class EmployeeDAO {
 		disconnect();
 		return logininfo;
 	}
-	
+
 	//社員一覧取得処理
 	public EmployeeDTO selectAll() {
 
-        PreparedStatement pstmt = null;
+		PreparedStatement pstmt = null;
 
-        ResultSet rset = null;
+		ResultSet rset = null;
 
-        EmployeeDTO edto = new EmployeeDTO();
+		EmployeeDTO edto = new EmployeeDTO();
 
-        try {
+		try {
 
-            // ①DBに接続    
+			// ①DBに接続    
 
-            connection(1);
+			connection(1);
 
-            
+			String sql = "select id, name, mail_address, password, permission_level from employee;";
 
-            String sql = "select id, mail_address, name, permission_level from employee;";
+			pstmt = con.prepareStatement(sql);
 
-            pstmt = con.prepareStatement(sql);
+			// ③SQLを実行
 
- 
+			rset = pstmt.executeQuery();
 
-            
 
-            // ③SQLを実行
 
-            rset = pstmt.executeQuery();
+			// ④検索結果の処理
 
- 
+			while (rset.next()) {
 
-            // ④検索結果の処理
+				EmployeeBean eb = new EmployeeBean();
 
-            while (rset.next()) {
+				eb.setEmployeeID(rset.getInt("id"));
+				eb.setName(rset.getString("name"));
+				eb.setMailaddress(rset.getString("mail_address"));
+				eb.setPassword(rset.getString("password"));
+				eb.setPermissionLevel(rset.getInt("permission_level"));
 
-                EmployeeBean eb = new EmployeeBean();
+				edto.add(eb);
 
-                eb.setEmployeeID(rset.getInt("id"));
-                
-                eb.setMailaddress(rset.getString("mail_address"));
-              
-                eb.setName(rset.getString("name"));
+			}
 
-                eb.setPermissionLevel(rset.getInt("permission_level"));
 
-                edto.add(eb);
+		} catch (Exception e) {
 
-            }
+			// TODO: handle exception
 
- 
+			e.printStackTrace();
 
-        } catch (Exception e) {
+		} finally {
 
-            // TODO: handle exception
+			try {
 
-            e.printStackTrace();
+				if (rset != null)
 
-        } finally {
+					rset.close();
 
-            try {
+				if (pstmt != null)
 
-                if (rset != null)
+					pstmt.close();
 
-                    rset.close();
+			} catch (Exception e) {
 
-                if (pstmt != null)
+				e.printStackTrace();
 
-                    pstmt.close();
+			}
 
-            } catch (Exception e) {
+		}
 
-                e.printStackTrace();
+		disconnect();
 
-            }
+		return edto;
 
-        }
+	}
 
-        disconnect();
 
-        return edto;
-
-    }
-	
-	
 	//社員情報の更新　アップデート
 	public int selfUpdateInfo(EmployeeBean eb, LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
@@ -192,11 +183,64 @@ public class EmployeeDAO {
 		disconnect();
 		return flg;
 	}
-	
-	
-	
-	  
-//	ディスコネクトメソッド   データベースからの接続を終了する
+
+	// 社員追加処理
+	public int addEmployee(int number,String name,String mail,String password,int level) {
+
+		PreparedStatement pstmt = null;
+
+		ResultSet rset = null;
+
+		int i = 0;
+
+		String sql = "insert into employee (id, mail_address, password ,name, permission_level) values(?,?,?,?,?);";
+
+		try {
+
+			// ①DBに接続    
+			connection(1);
+
+			con.setAutoCommit(false);
+
+			// ②ステートメントを生成
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1,number);
+			pstmt.setString(2,name);
+			pstmt.setString(3,mail);
+			pstmt.setString(4,password);
+			pstmt.setInt(5,level);
+
+			// ③SQLを実行
+			i += pstmt.executeUpdate();
+			con.commit();
+
+		} catch (Exception e) {
+
+			// TODO: handle exception
+
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (rset != null)
+					rset.close();
+				if (pstmt != null)
+					pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return i;
+	}
+
+
+
+
+
+
+	//	ディスコネクトメソッド   データベースからの接続を終了する
 	public void disconnect() {
 		try {
 			// ⑤DBを切断
@@ -206,5 +250,5 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

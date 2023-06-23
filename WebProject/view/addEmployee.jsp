@@ -7,34 +7,22 @@
 <title>社員追加</title>
 </head>
 <body>
-<table>
+
 <tr>
 
 </tr>
 	<div>
 	<h1 style="text-align:center">社員追加</h1>
 	
-	<th>社員番号</th>
-				<td><input type="number" name="nunber" align="center" required></td>
-			</tr><br>
-	<th>名前</th>
-				<td><input type="name" name="name" required></td>
-			</tr><br>
-			<tr>
-	<th>メールアドレス</th>
-				<td><input type="email" name="mail" required></td>
-			</tr><br>
-			<tr>
-	<th>パスワード</th>
-				<td><input type="password" name="password" required></td>
-			<tr><br>
-	<th>権限レベル</th>
-				<td><input type="level" name="level" required></td>
-			</tr></div>
-		
-</table>
-	<br>
-	<button style="text-align:center>追加</button>
-	
+	 <form method="post" action="<%=request.getContextPath()%>/AddEmployeeServlet">
+        <label>社員番号</label><input type="number" name="number"><br>
+        <label>名前</label><input type="name" name="name"><br>
+        <label>メールアドレス</label><input type="email" name="mail"><br>
+        <label>パスワード</label><input type="password" name="password"><br>
+        <label>権限レベル</label><input type="level" name="level"><br>
+        
+        <input type="submit" value="登録" align="center">
+    </form>
+    	
 </body>
 </html>
