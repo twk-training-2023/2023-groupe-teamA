@@ -7,21 +7,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
->>>>>> HEAD
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="lib" path="C:/pleiades/2023-03/tomcat/9/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/pleiades/2023-03/tomcat/9/lib/el-api.jar"/>
-	<classpathentry kind="lib" path="C:/pleiades/2023-03/tomcat/9/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades/2023-03/tomcat/9/lib/tomcat-api.jar"/>
-=======
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
->>>>>>> 8ba77b9a7a47e6640ed965a9f1450d7329332494
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

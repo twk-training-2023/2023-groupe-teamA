@@ -78,34 +78,20 @@ public class EmployeeDAO {
 	}
 
 	//社員一覧取得処理
-	public EmployeeDTO selectAll() {
+	public EmployeeDTO selectAll(LoginInfo loginInfo) {
 
 		PreparedStatement pstmt = null;
-
 		ResultSet rset = null;
-
 		EmployeeDTO edto = new EmployeeDTO();
-
 		try {
-
 			// ①DBに接続    
-
-			connection(1);
-
+			connection(loginInfo.getPermissionLevel());
 			String sql = "select id, name, mail_address, password, permission_level from employee;";
-
 			pstmt = con.prepareStatement(sql);
-
 			// ③SQLを実行
-
 			rset = pstmt.executeQuery();
-
-
-
 			// ④検索結果の処理
-
 			while (rset.next()) {
-
 				EmployeeBean eb = new EmployeeBean();
 
 				eb.setEmployeeID(rset.getInt("id"));
@@ -115,40 +101,22 @@ public class EmployeeDAO {
 				eb.setPermissionLevel(rset.getInt("permission_level"));
 
 				edto.add(eb);
-
 			}
-
-
 		} catch (Exception e) {
-
 			// TODO: handle exception
-
 			e.printStackTrace();
-
 		} finally {
-
 			try {
-
 				if (rset != null)
-
 					rset.close();
-
 				if (pstmt != null)
-
 					pstmt.close();
-
 			} catch (Exception e) {
-
 				e.printStackTrace();
-
 			}
-
 		}
-
 		disconnect();
-
 		return edto;
-
 	}
 
 
@@ -185,7 +153,7 @@ public class EmployeeDAO {
 	}
 
 	// 社員追加処理
-	public int addEmployee(int number,String name,String mail,String password,int level) {
+	public int addEmployee(String name,String mail,String password,int level,LoginInfo loginInfo) {
 
 		PreparedStatement pstmt = null;
 
@@ -193,34 +161,28 @@ public class EmployeeDAO {
 
 		int i = 0;
 
-		String sql = "insert into employee (id, mail_address, password ,name, permission_level) values(?,?,?,?,?);";
+		String sql = "insert into employee (name, mail_address, password , permission_level) values(?,?,?,?);";
 
 		try {
 
 			// ①DBに接続    
-			connection(1);
+			connection(loginInfo.getPermissionLevel());
 
 			con.setAutoCommit(false);
 
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1,number);
-			pstmt.setString(2,name);
-			pstmt.setString(3,mail);
-			pstmt.setString(4,password);
-			pstmt.setInt(5,level);
+			
+			pstmt.setString(1,name);
+			pstmt.setString(2,mail);
+			pstmt.setString(3,password);
+			pstmt.setInt(4,level);
 
 			// ③SQLを実行
-			i += pstmt.executeUpdate();
-			con.commit();
-
+			i = pstmt.executeUpdate();
 		} catch (Exception e) {
-
-			// TODO: handle exception
-
 			e.printStackTrace();
-
 		} finally {
 			try {
 				if (rset != null)
