@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,7 @@ public class SkillApprovalServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+		String url;
 
 		if (loginInfo != null) {
 			int employeeID = loginInfo.getEmployeeID();
@@ -47,18 +49,23 @@ public class SkillApprovalServlet extends HttpServlet {
 			employeeBean.setName(name);
 
 			SkillAppealDAO skillAppealDAO = new SkillAppealDAO();
-			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, name, skill_name, skill_detail, status);			
-
+			boolean success = skillAppealDAO.insertSkillRequest(employeeBean, name, skill_name, skill_detail, status);
+			
+			
 
 			if (success) {
 				// スキル申請成功時の処理
-				response.getWriter().println("スキル申請が成功しました。");
+				request.setAttribute("success", "スキル申請成功");
+				url = "view/myPage.jsp";
 			} else {
 				// スキル申請失敗時の処理
-				response.getWriter().println("スキル申請に失敗しました。");
+				request.setAttribute("fail", "スキル申請失敗");
+				url = "view/addSkillApply.jsp";
 			}
 		} else {
-			response.getWriter().println("ログインしていません。");
+			url = "view/login.jsp";
 		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+        rd.forward(request, response);
 	}
 }
