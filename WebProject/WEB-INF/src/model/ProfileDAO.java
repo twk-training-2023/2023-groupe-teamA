@@ -119,7 +119,6 @@ public class ProfileDAO {
 	
 	
 	
-	
 	//社員情報 取得のセレクト
 	public ProfileDTO selectInfo(LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
