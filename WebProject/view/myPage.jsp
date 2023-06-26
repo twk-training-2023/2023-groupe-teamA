@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <jsp:useBean id="pdto" scope="request" class="model.ProfileDTO" />
-
 <!DOCTYPE html>
 <html>
 <head>

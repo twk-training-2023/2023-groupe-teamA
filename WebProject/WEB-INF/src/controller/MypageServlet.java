@@ -28,27 +28,26 @@ public class MypageServlet extends HttpServlet {
 
 		ProfileBean pb = new ProfileBean();
 		HttpSession session = request.getSession();
-		LoginInfo logininfo = (LoginInfo) session.getAttribute("loginInfo");
-		int employeeID = logininfo.getEmployeeID();
- 		pb.setEmployeeID(employeeID);
-		
-		ProfileDAO pdao = new ProfileDAO();
-		
-		ProfileDTO profiledto = pdao.selectInfo(pb);
-		
-		request.setAttribute("pdto", profiledto);
-		
-						
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
-		
-
-		if (loginInfo != null) {
-			// ログイン情報がセッションに保存されている場合はマイページにフォワード
-			RequestDispatcher rd = request.getRequestDispatcher("/view/myPage.jsp");
-			rd.forward(request, response);
-		} else {
-			// ログインされていない場合はログイン画面にリダイレクト
-			response.sendRedirect(request.getContextPath() + "/login.jsp");
+		String url = "";
+		if (loginInfo == null) {
+ 			request.setAttribute("errorMsg", "セッションが切れました。再ログインをしてください。");
+ 			url = "view/login.jsp";
+		}else {
+			int employeeID = loginInfo.getEmployeeID();
+	 		pb.setEmployeeID(employeeID);
+			
+			ProfileDAO pdao = new ProfileDAO();
+			
+			ProfileDTO profiledto = pdao.selectInfo(pb);
+			
+			request.setAttribute("pdto", profiledto);
+			
+			url = "/view/myPage.jsp";
 		}
+		
+		// ログイン情報がセッションに保存されている場合はマイページにフォワード
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 }

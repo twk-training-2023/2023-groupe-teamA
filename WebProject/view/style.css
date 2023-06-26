@@ -2,7 +2,7 @@
 body {
 	font-family: BIZ UDPゴシック;
 	text-align: center;
-	font-size: 32px;
+	font-size: 28px;
 }
 
 hr {
@@ -40,8 +40,6 @@ hr {
 .right {
     position: absolute;
     right: 0px;
-}
-
 }
 
 .errorMsg {
