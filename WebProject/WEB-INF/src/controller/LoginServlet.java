@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
  		
  		String url;
  		HttpSession session = request.getSession();
- 		
+ 		session.setMaxInactiveInterval(1800);
 // 		取得結果判定
 // 		処理で取得した結果で条件分岐
  		

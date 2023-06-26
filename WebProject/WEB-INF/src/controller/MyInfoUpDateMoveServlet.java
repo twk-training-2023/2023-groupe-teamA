@@ -20,42 +20,49 @@ import model.ProfileDTO;
 @WebServlet("/MyInfoUpDateMoveServlet")
 public class MyInfoUpDateMoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MyInfoUpDateMoveServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MyInfoUpDateMoveServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		文字コードの設定
-//		引数の文字コードをUTF-8に設定
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//		文字コードの設定
+		//		引数の文字コードをUTF-8に設定
 		request.setCharacterEncoding("UTF-8");
- 		response.setContentType("text/html; charset=UTF-8");
- 		
- 		HttpSession session = request.getSession();
- 		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+		response.setContentType("text/html; charset=UTF-8");
 
- 		ProfileDAO pdao = new ProfileDAO();
- 		
- 		ProfileDTO pdto = pdao.selectInfo(loginInfo);
- 		pdto = pdao.selectAppeal(pdto, loginInfo);
- 		
- 		request.setAttribute("pdto", pdto);
- 		
-        RequestDispatcher rd = request.getRequestDispatcher("view/myInfoUpdate.jsp");
-        rd.forward(request, response);
+		HttpSession session = request.getSession();
+		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+		String url = "";
+		if (loginInfo == null) {
+			request.setAttribute("errorMsg", "セッションが切れました。再ログインをしてください。");
+			url = "view/login.jsp";
+		} else {
+			ProfileDAO pdao = new ProfileDAO();
+
+			ProfileDTO pdto = pdao.selectInfo(loginInfo);
+			pdto = pdao.selectAppeal(pdto, loginInfo);
+
+			request.setAttribute("pdto", pdto);
+			url = "view/myInfoUpdate.jsp";
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

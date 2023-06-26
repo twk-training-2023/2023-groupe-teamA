@@ -23,19 +23,20 @@ import model.ProfileDTO;
 @WebServlet("/MyInfoUpDateServlet")
 public class MyInfoUpDateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MyInfoUpDateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MyInfoUpDateServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -43,51 +44,52 @@ public class MyInfoUpDateServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		文字コードの設定
-//		引数の文字コードをUTF-8に設定
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//		文字コードの設定
+		//		引数の文字コードをUTF-8に設定
 		request.setCharacterEncoding("UTF-8");
- 		response.setContentType("text/html; charset=UTF-8");
- 		
- 		HttpSession session = request.getSession();
- 		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
- 		
- 		EmployeeBean eb = new EmployeeBean();
- 		eb.setEmployeeID(loginInfo.getEmployeeID());
- 		eb.setMailaddress(request.getParameter("mail"));
- 		eb.setPassword(request.getParameter("pass"));
- 		
- 		ProfileBean pb = new ProfileBean();
- 		pb.setEmployeeID(loginInfo.getEmployeeID());
- 		pb.setAppeal(request.getParameter("appeal"));
- 		
- 		
- 		EmployeeDAO edao = new EmployeeDAO();
- 		int updateEmployeeflg = edao.selfUpdateInfo(eb, loginInfo);
- 		
- 		ProfileDAO pdao = new ProfileDAO();
- 		int updateAppealflg = pdao.selfUpdateAppeal(pb, loginInfo);
- 		
- 		
- 		ProfileDTO pdto = pdao.selectInfo(loginInfo);
-		pdto = pdao.selectAppeal(pdto, loginInfo);
-		
-		request.setAttribute("pdto", pdto);
+		response.setContentType("text/html; charset=UTF-8");
 
-		String url;
- 		if (updateEmployeeflg == 1 && updateAppealflg == 1) {
- 			request.setAttribute("successMsg", "自己情報を更新しました");
- 			url = "view/myPage.jsp";
- 		}else {
- 			request.setAttribute("errorMsg", "更新に失敗しました");
- 			url = "view/myInfoUpdate.jsp";
- 		}
- 		
- 		
- 		
-        //JSPへのフォワード処理
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+		HttpSession session = request.getSession();
+		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+		String url = "";
+		if (loginInfo == null) {
+			request.setAttribute("errorMsg", "セッションが切れました。再ログインをしてください。");
+			url = "view/login.jsp";
+		} else {
+			EmployeeBean eb = new EmployeeBean();
+			eb.setEmployeeID(loginInfo.getEmployeeID());
+			eb.setMailaddress(request.getParameter("mail"));
+			eb.setPassword(request.getParameter("pass"));
+
+			ProfileBean pb = new ProfileBean();
+			pb.setEmployeeID(loginInfo.getEmployeeID());
+			pb.setAppeal(request.getParameter("appeal"));
+
+			EmployeeDAO edao = new EmployeeDAO();
+			int updateEmployeeflg = edao.selfUpdateInfo(eb, loginInfo);
+
+			ProfileDAO pdao = new ProfileDAO();
+			int updateAppealflg = pdao.selfUpdateAppeal(pb, loginInfo);
+
+			ProfileDTO pdto = pdao.selectInfo(loginInfo);
+			pdto = pdao.selectAppeal(pdto, loginInfo);
+
+			request.setAttribute("pdto", pdto);
+
+			if (updateEmployeeflg == 1 && updateAppealflg == 1) {
+				request.setAttribute("successMsg", "自己情報を更新しました");
+				url = "view/myPage.jsp";
+			} else {
+				request.setAttribute("errorMsg", "更新に失敗しました");
+				url = "view/myInfoUpdate.jsp";
+			}
+		}
+
+		//JSPへのフォワード処理
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }

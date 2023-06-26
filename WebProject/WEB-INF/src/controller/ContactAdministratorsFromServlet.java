@@ -22,45 +22,49 @@ import model.ProfileDTO;
  */
 @WebServlet("/ContactAdministratorsFromServlet")
 public class ContactAdministratorsFromServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L ;
-	
-    public ContactAdministratorsFromServlet() {
-       super();
-    }
-    //未完成
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private static final long serialVersionUID = 1L;
+
+	public ContactAdministratorsFromServlet() {
+		super();
+	}
+
+	//未完成
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
-		
-		CommentAdminBean caBean = new CommentAdminBean();
-		
-		
-		String title = request.getParameter("title");
-	    caBean.setTitle(title);
-		String content =request.getParameter("content");
-		caBean.setContent(content);
-		
-		
-		CommentAdminDAO caDAO = new CommentAdminDAO();
-		caDAO.insertCommentAdmin(caBean,loginInfo);
-		
-		//マイページ遷移
-		ProfileBean pb = new ProfileBean();
-		LoginInfo logininfo = (LoginInfo) session.getAttribute("loginInfo");
-		int employeeID = logininfo.getEmployeeID();
- 		pb.setEmployeeID(employeeID);
-		ProfileDAO pdao = new ProfileDAO();
-		ProfileDTO profiledto = pdao.selectInfo(pb);
-		request.setAttribute("pdto", profiledto);
-		
-		RequestDispatcher dis = request.getRequestDispatcher("/view/myPage.jsp");
-		dis.forward(request,response);
-		
+		String url = "";
+		if (loginInfo == null) {
+			request.setAttribute("errorMsg", "セッションが切れました。再ログインをしてください。");
+			url = "view/login.jsp";
+		} else {
+			CommentAdminBean caBean = new CommentAdminBean();
+
+			String title = request.getParameter("title");
+			caBean.setTitle(title);
+			String content = request.getParameter("content");
+			caBean.setContent(content);
+
+			CommentAdminDAO caDAO = new CommentAdminDAO();
+			caDAO.insertCommentAdmin(caBean, loginInfo);
+
+			//マイページ遷移
+			ProfileBean pb = new ProfileBean();
+			LoginInfo logininfo = (LoginInfo) session.getAttribute("loginInfo");
+			int employeeID = logininfo.getEmployeeID();
+			pb.setEmployeeID(employeeID);
+			ProfileDAO pdao = new ProfileDAO();
+			ProfileDTO profiledto = pdao.selectInfo(pb);
+			request.setAttribute("pdto", profiledto);
+			url = "/view/myPage.jsp";
+		}
+		RequestDispatcher dis = request.getRequestDispatcher(url);
+		dis.forward(request, response);
 	}
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
