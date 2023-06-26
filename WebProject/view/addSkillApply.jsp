@@ -24,5 +24,15 @@
 		</table><br>
 		<input type="submit" value="申請">
 	</form>
+			
 </body>
+<%
+if(request.getAttribute("fail")!=null){
+	String fail = (String)request.getAttribute("fail");
+%>
+<script type="text/javascript">
+    var msg = "<%=fail%>";
+    alert(msg);
+    </script>
+<%}%>
 </html>
