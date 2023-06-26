@@ -31,21 +31,21 @@ public class MypageServlet extends HttpServlet {
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		String url = "";
 		if (loginInfo == null) {
- 			request.setAttribute("errorMsg", "セッションが切れました。再ログインをしてください。");
- 			url = "view/login.jsp";
-		}else {
+			request.setAttribute("errorMsg", "セッションが切れました。再ログインをしてください。");
+			url = "view/login.jsp";
+		} else {
 			int employeeID = loginInfo.getEmployeeID();
-	 		pb.setEmployeeID(employeeID);
-			
+			pb.setEmployeeID(employeeID);
+
 			ProfileDAO pdao = new ProfileDAO();
-			
+
 			ProfileDTO profiledto = pdao.selectInfo(pb);
-			
-			request.setAttribute("pdto", profiledto);
-			
+
+			session.setAttribute("pdto", profiledto);
+
 			url = "/view/myPage.jsp";
 		}
-		
+
 		// ログイン情報がセッションに保存されている場合はマイページにフォワード
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);

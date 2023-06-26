@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 /.gitkeep
 /controller/
+=======
+/controller/
+/junitTest/
+>>>>>>> b5dcab951256a7e0f0e380ce324b61a8ba7a26a4
 /model/
 /org/
 /SESSIONS.ser
