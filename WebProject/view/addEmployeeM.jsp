@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p class="errorMsg">${requestScope.successMsg }</p>
+	<p class="errorMsg">${requestScope.errorMsg }</p>
 	<from action="<%=request.getContextPath()%>/AddEmployeeServlet">
 		<table>
 			<tr>
@@ -30,7 +32,7 @@
 	</from><br><br>
 	<form action="<%=request.getContextPath()%>/AddCsvEmployeeServlet"
 		method="post" enctype="multipart/form-data">
-		<label>ファイル：</label> <input type="file" name="csv.file" multiple required/>
+		<label>ファイル：</label> <input type="file" name="csvFile" multiple required/>
 		<br />
 		<!-- 追加するのはここまで -->
 		<input type="submit" value="まとめて追加"/>
