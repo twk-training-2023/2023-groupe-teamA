@@ -29,23 +29,23 @@ public class AddEmployeeServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}*/
+	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+	// @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Jspのフォーム画面から検索対象ユーザID取得
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		HttpSession session = request.getSession();
- 		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
 
 		// フォームの値を受け取る
 		String name = request.getParameter("name");
@@ -53,16 +53,20 @@ public class AddEmployeeServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		int level = Integer.parseInt(request.getParameter("level"));
 
-		// データベースに登録する
+		// インスタンス化
 		EmployeeDAO edao = new EmployeeDAO();
-		
-		int result = edao.addEmployee(name,mail,password,level,loginInfo);
-		if(result == 5) {
 
-			RequestDispatcher rd = request.getRequestDispatcher("/view/listEmployee.jsp");
+		//結果表示
+		int result = edao.addEmployee(name,mail,password,level,loginInfo);
+		if(result==1) {
+			RequestDispatcher rd = request.getRequestDispatcher("/view/administratorMenu.jsp");
 			rd.forward(request, response);
+
+
 		}
+
 	}
 }
+
 
 

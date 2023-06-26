@@ -58,7 +58,7 @@ public class EmployeesListServlet extends HttpServlet {
  		
 // 		社員一覧情報　格納
  		EmployeeDTO edto = edao.selectAll(loginInfo);
- 		System.out.println(edto.size());
+ 
  		 request.setAttribute("edto",edto);
  		 
 // 		JSPへのフォワード処理

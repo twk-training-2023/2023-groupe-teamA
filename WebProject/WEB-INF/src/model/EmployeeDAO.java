@@ -181,6 +181,7 @@ public class EmployeeDAO {
 
 			// ③SQLを実行
 			i = pstmt.executeUpdate();
+			con.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

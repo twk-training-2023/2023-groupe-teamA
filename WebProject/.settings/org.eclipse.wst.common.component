@@ -9,6 +9,8 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WEB-INF/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/work"/>
                                         
         
         
