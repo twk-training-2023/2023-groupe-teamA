@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class EmployeeDAO {
 	//接続用の情報をフィールドに定数として定義
@@ -152,7 +151,6 @@ public class EmployeeDAO {
 		disconnect();
 		return flg;
 	}
-<<<<<<< HEAD
 
 	// 社員追加処理
 	public int addEmployee(String name,String mail,String password,int level,LoginInfo loginInfo) {
@@ -169,13 +167,12 @@ public class EmployeeDAO {
 
 			// ①DBに接続    
 			connection(loginInfo.getPermissionLevel());
-
+			//自動コミットoff
 			con.setAutoCommit(false);
 
 			// ②ステートメントを生成
 			pstmt = con.prepareStatement(sql);
 
-			
 			pstmt.setString(1,name);
 			pstmt.setString(2,mail);
 			pstmt.setString(3,password);
@@ -184,111 +181,20 @@ public class EmployeeDAO {
 			// ③SQLを実行
 			i = pstmt.executeUpdate();
 			con.commit();
+			
 		} catch (Exception e) {
-=======
-	
-	public boolean insertEmployeeCSV(EmployeeDTO edto,LoginInfo loginInfo) throws SQLException {
-		PreparedStatement pstmtID = null;
-		PreparedStatement pstmtEmployee = null;
-		PreparedStatement pstmtProfile = null;
-		ResultSet rset = null;
-		int employeeflg = 0;
-		int profileflg = 0;
-		boolean result = false;
-		EmployeeBean eb;
-		ProfileBean pb;
-		//社員番号の生成している最後の番号を取得する
-		String employeeIDSQL = "select last_value from employee_id_seq;";
-		
-		//社員テーブルに追加するSQL文
-		String insertEmployeeSQL = "INSERT INTO employee (mail_address, password, name, permission_level) VALUES ";
-		String valueEmployeeSQL = "(?,?,?,?),";
-		StringBuilder employeeSQLBuild = new StringBuilder();
-		employeeSQLBuild.append(insertEmployeeSQL);
-		
-		//プロフィールテーブルに追加するSQL文
-		String insertProfileSQL = "INSERT INTO profile (id, name, appeal) VALUES ";
-		String valueProfileSQL = "(?,?,?),";
-		
-		
-		StringBuilder profileSQLBuild = new StringBuilder();
-		profileSQLBuild.append(insertProfileSQL);
-		for (int i = 0; i < edto.size(); i++) {
-			employeeSQLBuild.append(valueEmployeeSQL);
-			profileSQLBuild.append(valueProfileSQL);
-		}
-		employeeSQLBuild.deleteCharAt(employeeSQLBuild.length() - 1);
-		employeeSQLBuild.append(";");
-		String employeeSQL = employeeSQLBuild.toString();
-		
-		profileSQLBuild.deleteCharAt(profileSQLBuild.length() - 1);
-		profileSQLBuild.append(";");
-		String profileSQL = profileSQLBuild.toString();
-		
-		try {
-			connection(loginInfo.getPermissionLevel());
-			
-			//自動コミットOFF
-            con.setAutoCommit(false);
-			
-            pstmtID = con.prepareStatement(employeeIDSQL);
-            rset = pstmtID.executeQuery();
-            int lastID = 0;
-            while (rset.next()) {
-            	lastID = rset.getInt("last_value");
-            }
-            
-            pstmtEmployee = con.prepareStatement(employeeSQL);
-            pstmtProfile = con.prepareStatement(profileSQL);
-			//idを任意の値に入れ替えたい
-			for (int i = 0; i < edto.size(); i++) {
-				int index = i * 4;
-				eb = edto.get(i);
-				pstmtEmployee.setString(1 + index, eb.getMailaddress());
-				pstmtEmployee.setString(2 + index, eb.getPassword());
-				pstmtEmployee.setString(3 + index, eb.getName());
-				pstmtEmployee.setInt(4 + index, eb.getPermissionLevel());
-			}
-			
-			for (int i = 0; i < edto.size(); i++) {
-				int index = i * 3;
-				eb = edto.get(i);
-				pstmtProfile.setInt(1 + index, 1 + lastID + i);
-				pstmtProfile.setString(2 + index, eb.getName());
-				pstmtProfile.setString(3 + index, "未設定");
-			}
-			
-
-			employeeflg = pstmtEmployee.executeUpdate();
-			if (employeeflg == edto.size()) {
-				profileflg = pstmtProfile.executeUpdate();
-				if (profileflg == edto.size()) {
-					result = true;
-					con.commit();
-				}
-			}
-		} catch (Exception e) {
-			con.rollback();
->>>>>>> f034b639e8ad051c74ee2e13974838f57947bbad
 			e.printStackTrace();
 		} finally {
 			try {
 				if (rset != null)
 					rset.close();
-<<<<<<< HEAD
 				if (pstmt != null)
 					pstmt.close();
-=======
-				if (pstmtEmployee != null)
-					pstmtEmployee.close();
-					pstmtProfile.close();
->>>>>>> f034b639e8ad051c74ee2e13974838f57947bbad
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		disconnect();
-<<<<<<< HEAD
 		return i;
 	}
 
@@ -298,14 +204,6 @@ public class EmployeeDAO {
 
 
 	//	ディスコネクトメソッド   データベースからの接続を終了する
-=======
-		return result;
-	}
-	
-	
-	  
-//	ディスコネクトメソッド   データベースからの接続を終了する
->>>>>>> f034b639e8ad051c74ee2e13974838f57947bbad
 	public void disconnect() {
 		try {
 			// ⑤DBを切断
