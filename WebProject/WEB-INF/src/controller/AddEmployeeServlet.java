@@ -59,7 +59,7 @@ public class AddEmployeeServlet extends HttpServlet {
 		int result = edao.addEmployee(name,mail,password,level,loginInfo);
 		if(result == 5) {
 
-			RequestDispatcher rd = request.getRequestDispatcher("/view/administrator.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/view/listEmployee.jsp");
 			rd.forward(request, response);
 		}
 	}
