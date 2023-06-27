@@ -50,12 +50,12 @@ public class LoginServlet extends HttpServlet {
  		EmployeeBean eb = new EmployeeBean();
  		
 // 		パラメータの取得
+// 		引数のrequestから"mail"をキーに、メールアドレスを取得しBeanにsetterメソッドで格納
  		String mail = request.getParameter("mail");
  		eb.setMailaddress(mail);
 // 		引数のrequestから"password"をキーに、パスワードを取得しBeanにsetterメソッドで格納
  		String pass = request.getParameter("password");
  		eb.setPassword(pass);
- 		
  		
 // 		DAO宣言
 // 		EmployeeテーブルのDAO「EmployeeDAO」のコンストラクタを実行
