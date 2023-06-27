@@ -56,10 +56,14 @@ public class AddEmployeeServlet extends HttpServlet {
 		// インスタンス化
 		EmployeeDAO edao = new EmployeeDAO();
 
+
+
+
 		//結果表示
 		int result = edao.addEmployee(name,mail,password,level,loginInfo);
 		if(result==1) {
 			RequestDispatcher rd = request.getRequestDispatcher("/view/administratorMenu.jsp");
+
 			rd.forward(request, response);
 
 
