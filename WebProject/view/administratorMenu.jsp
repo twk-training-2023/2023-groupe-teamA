@@ -9,9 +9,13 @@
 </head>
 <body>
 	<h2>管理者用メニュー</h2>
+
+	<div>
 	<%@include file="header-navi.jsp" %>
-	<a href="listEmployees.jsp">・社員一覧ページへ</a><br><br>
-	<a href="ContactAdministratorsList.jsp">・連絡一覧ページへ</a><br><br>
-	<a href="skillApproval.jsp">・スキル承認ページへ</a>
+	<a href="<%=request.getContextPath()%>/EmployeesListServlet">社員一覧ページへ</a><br>
+	<a href="<%=request.getContextPath()%>/ContactAdministratorsFromSrevlet">連絡一覧ページへ</a><br>
+	<a href="<%=request.getContextPath()%>/SkillApprovalServlet">スキル承認ページへ</a>
+	</div>
+
 </body>
 </html>
