@@ -82,7 +82,6 @@ public class EmployeeDAO {
 	//社員情報の更新　アップデート
 	public int selfUpdateInfo(EmployeeBean eb, LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
 		int flg = 0;
 		String sql = "update employee set mail_address = ?, password = ? where id = ?;";
 		try {
@@ -99,8 +98,6 @@ public class EmployeeDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rset != null)
-					rset.close();
 				if (pstmt != null)
 					pstmt.close();
 			} catch (Exception e) {

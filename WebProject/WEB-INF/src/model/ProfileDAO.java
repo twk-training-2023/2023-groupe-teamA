@@ -124,7 +124,7 @@ public class ProfileDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ProfileDTO pdto = new ProfileDTO();
-		String sql = "select name, mail_address, password from employee where id = ?";
+		String sql = "select id, name, mail_address, password from employee where id = ?";
 		
 		try {
 			connection(loginInfo.getPermissionLevel());
@@ -137,6 +137,7 @@ public class ProfileDAO {
 			// ④検索結果の処理
 			while (rset.next()) {
 				ProfileBean pb = new ProfileBean();
+				pb.setEmployeeID(rset.getInt("id"));
 				pb.setName(rset.getString("name"));
 				pb.setMail(rset.getString("mail_address"));
 				pb.setPass(rset.getString("password"));

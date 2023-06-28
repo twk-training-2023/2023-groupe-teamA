@@ -32,19 +32,11 @@ public class MyInfoUpDateServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//		文字コードの設定
 		//		引数の文字コードをUTF-8に設定
@@ -77,7 +69,6 @@ public class MyInfoUpDateServlet extends HttpServlet {
 			pdto = pdao.selectAppeal(pdto, loginInfo);
 
 			request.setAttribute("pdto", pdto);
-
 			if (updateEmployeeflg == 1 && updateAppealflg == 1) {
 				request.setAttribute("successMsg", "自己情報を更新しました");
 				url = "view/myPage.jsp";
