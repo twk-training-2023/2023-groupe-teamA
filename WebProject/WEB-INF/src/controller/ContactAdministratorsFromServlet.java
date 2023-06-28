@@ -28,8 +28,8 @@ public class ContactAdministratorsFromServlet extends HttpServlet {
 		super();
 	}
 
-	//未完成
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
@@ -63,7 +63,7 @@ public class ContactAdministratorsFromServlet extends HttpServlet {
 		dis.forward(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
