@@ -7,10 +7,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="WebProject/WEB-INF/lib/postgresql-42.6.0.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper-el.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/annotations-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/el-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/jasper-el.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="WebProject/WEB-INF/classes"/>
 </classpath>
