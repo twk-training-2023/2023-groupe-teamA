@@ -20,6 +20,5 @@
 	<classpathentry kind="lib" path="C:/Users/KANATO-MOMOZAKI/Documents/GitHub/2023-groupe-teamA/WebProject/WEB-INF/lib/commons-logging-1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/KANATO-MOMOZAKI/Documents/GitHub/2023-groupe-teamA/WebProject/WEB-INF/lib/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/KANATO-MOMOZAKI/Downloads/postgresql-42.6.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/KANATO-MOMOZAKI/Downloads/spring-test-6.0.10.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

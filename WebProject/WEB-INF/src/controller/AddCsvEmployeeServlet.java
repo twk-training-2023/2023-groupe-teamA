@@ -108,23 +108,22 @@ public class AddCsvEmployeeServlet extends HttpServlet {
 				}
 	            EmployeeDAO edao = new EmployeeDAO();
 	            try {
-					boolean result = edao.insertEmployeeCSV(edto, loginInfo);
+					boolean result = edao.insertEmployee(edto, loginInfo);
 					if (result) {
 						request.setAttribute("successMsg", "社員を" + edto.size() + "人を追加しました。");
-						url = "view/addEmployeeM.jsp";
+						url = "view/addEmployee.jsp";
 					}else {
 						request.setAttribute("errorMsg", "追加に失敗しました。");
-						url = "view/addEmployeeM.jsp";
+						url = "view/addEmployee.jsp";
 					}
 				} catch (SQLException e) {
 					// TODO 自動生成された catch ブロック
 					e.printStackTrace();
 				}
-	            
 	        }else {
 	        	//CSV以外のファイルの場合
 				request.setAttribute("errorMsg", "CSVファイルを送信してください。");
-				url = "view/addEmployeeM.jsp";
+				url = "view/addEmployee.jsp";
 	        }
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);

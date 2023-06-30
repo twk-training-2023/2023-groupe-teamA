@@ -81,7 +81,7 @@ class EmployeeDAOTest {
 				Arrays.asList("000","kkkkk@twk.co.jp","asd", "川口恵美", "1")
 				);
 		EmployeeDTO edto = setmodel.setEmployeeDTO(parameter);
-		boolean result = edao.insertEmployeeCSV(edto, loginInfo);
+		boolean result = edao.insertEmployee(edto, loginInfo);
 		assertEquals(ans, result);
 	}
 	
@@ -96,7 +96,7 @@ class EmployeeDAOTest {
 				Arrays.asList("000","kkkkk@twk.co.jp","asd", "川口恵美", "1")
 				);
 		EmployeeDTO edto = setmodel.setEmployeeDTO(parameter);
-		boolean result = edao.insertEmployeeCSV(edto, loginInfo);
+		boolean result = edao.insertEmployee(edto, loginInfo);
 		assertEquals(ans, result);
 	}
 }

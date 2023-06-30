@@ -6,79 +6,124 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmployeeDAO {
-	//接続用の情報をフィールドに定数として定義
-	private static final String RDB_DRIVE = "org.postgresql.Driver";
-	static AdminConstList adminConPara = new AdminConstList();
-	private static final String ADMIN_URL = adminConPara.getUrl();
-	private static final String ADMIN_USER = adminConPara.getUser();
-	private static final String ADMIN_PASS = adminConPara.getPass();
-	static GeneralConstList generalConPara = new GeneralConstList();
-	private static final String GENERAL_URL = generalConPara.getUrl();
-	private static final String GENERAL_USER = generalConPara.getUser();
-	private static final String GENERAL_PASS = generalConPara.getPass();
-	private Connection con = null;
-
-//	コネクトメソッド    データベースに接続する
-	private void connection(int permissionLevel) {
-		try {
-			Class.forName(RDB_DRIVE);
-			if (permissionLevel > 3) {
-				con = DriverManager.getConnection(ADMIN_URL, ADMIN_USER, ADMIN_PASS);
-			}else {
-				con = DriverManager.getConnection(GENERAL_URL, GENERAL_USER, GENERAL_PASS);
-			}
-		} catch (Exception e) {
-			throw new IllegalStateException(e);
-		}
-	}
-	
-//	ログイン認証メソッド
-//	ログインの際に入力されたメールアドレスとパスワードをデータベースで検索してヒットした場合に社員番号、名前、権限レベルを格納したLoginInfoを返す
-	public LoginInfo selectCheckPass(EmployeeBean eb) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		LoginInfo logininfo = null;
-		try {
-			// ①DBに接続	
-			connection(1);
-			
-			String sql = "select id, name, permission_level from employee where mail_address = ? and password = ?;";
-			pstmt = con.prepareStatement(sql);
 
 
-			pstmt.setString(1, eb.getMailaddress());
-			pstmt.setString(2, eb.getPassword());
-			
-			// ③SQLを実行
-			rset = pstmt.executeQuery();
+	public class EmployeeDAO {
+		//接続用の情報をフィールドに定数として定義
+		private static final String RDB_DRIVE = "org.postgresql.Driver";
+		static AdminConstList adminConPara = new AdminConstList();
+		private static final String ADMIN_URL = adminConPara.getUrl();
+		private static final String ADMIN_USER = adminConPara.getUser();
+		private static final String ADMIN_PASS = adminConPara.getPass();
+		static GeneralConstList generalConPara = new GeneralConstList();
+		private static final String GENERAL_URL = generalConPara.getUrl();
+		private static final String GENERAL_USER = generalConPara.getUser();
+		private static final String GENERAL_PASS = generalConPara.getPass();
+		private Connection con = null;
 
-			// ④検索結果の処理
-			while (rset.next()) {
-				logininfo = new LoginInfo();
-				logininfo.setEmployeeID(rset.getInt("id"));
-				logininfo.setName(rset.getString("name"));
-				logininfo.setPermissionLevel(rset.getInt("permission_level"));	
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
+		//	コネクトメソッド    データベースに接続する
+		private void connection(int permissionLevel) {
 			try {
-				if (rset != null)
-					rset.close();
-				if (pstmt != null)
-					pstmt.close();
+				Class.forName(RDB_DRIVE);
+				if (permissionLevel > 3) {
+					con = DriverManager.getConnection(ADMIN_URL, ADMIN_USER, ADMIN_PASS);
+				}else {
+					con = DriverManager.getConnection(GENERAL_URL, GENERAL_USER, GENERAL_PASS);
+				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				throw new IllegalStateException(e);
 			}
 		}
-		disconnect();
-		return logininfo;
-	}
-	
-	
+
+		//	ログイン認証メソッド
+		//	ログインの際に入力されたメールアドレスとパスワードをデータベースで検索してヒットした場合に社員番号、名前、権限レベルを格納したLoginInfoを返す
+		public LoginInfo selectCheckPass(EmployeeBean eb) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			LoginInfo logininfo = null;
+			try {
+				// ①DBに接続	
+				connection(1);
+
+				String sql = "select id, name, permission_level from employee where mail_address = ? and password = ?;";
+				pstmt = con.prepareStatement(sql);
+
+
+				pstmt.setString(1, eb.getMailaddress());
+				pstmt.setString(2, eb.getPassword());
+
+				// ③SQLを実行
+				rset = pstmt.executeQuery();
+
+				// ④検索結果の処理
+				while (rset.next()) {
+					logininfo = new LoginInfo();
+					logininfo.setEmployeeID(rset.getInt("id"));
+					logininfo.setName(rset.getString("name"));
+					logininfo.setPermissionLevel(rset.getInt("permission_level"));	
+				}
+
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rset != null)
+						rset.close();
+					if (pstmt != null)
+						pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			disconnect();
+			return logininfo;
+		}
+
+		//社員一覧取得処理
+		public EmployeeDTO selectAll(LoginInfo loginInfo) {
+
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			EmployeeDTO edto = new EmployeeDTO();
+			try {
+				// ①DBに接続    
+				connection(loginInfo.getPermissionLevel());
+				String sql = "select id, name, mail_address, password, permission_level from employee;";
+				pstmt = con.prepareStatement(sql);
+				// ③SQLを実行
+				rset = pstmt.executeQuery();
+				// ④検索結果の処理
+				while (rset.next()) {
+					EmployeeBean eb = new EmployeeBean();
+
+					eb.setEmployeeID(rset.getInt("id"));
+					eb.setName(rset.getString("name"));
+					eb.setMailaddress(rset.getString("mail_address"));
+					eb.setPassword(rset.getString("password"));
+					eb.setPermissionLevel(rset.getInt("permission_level"));
+
+					edto.add(eb);
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rset != null)
+						rset.close();
+					if (pstmt != null)
+						pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			disconnect();
+			return edto;
+		}
+
+
+		
 	//社員情報の更新　アップデート
 	public int selfUpdateInfo(EmployeeBean eb, LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
@@ -108,7 +153,7 @@ public class EmployeeDAO {
 		return flg;
 	}
 	
-	public boolean insertEmployeeCSV(EmployeeDTO edto,LoginInfo loginInfo) throws SQLException {
+	public boolean insertEmployee(EmployeeDTO edto,LoginInfo loginInfo) throws SQLException {
 		PreparedStatement pstmtID = null;
 		PreparedStatement pstmtEmployee = null;
 		PreparedStatement pstmtProfile = null;
@@ -206,6 +251,45 @@ public class EmployeeDAO {
 		return result;
 	}
 	
+	
+	
+	
+	// 社員追加処理
+		public int addEmployee(String name,String mail,String password,int level,LoginInfo loginInfo) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			int i = 0;
+			String sql = "insert into employee (name, mail_address, password , permission_level) values(?,?,?,?);";
+			try {
+				// ①DBに接続    
+				connection(loginInfo.getPermissionLevel());
+				//自動コミットoff
+				con.setAutoCommit(false);
+				// ②ステートメントを生成
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1,name);
+				pstmt.setString(2,mail);
+				pstmt.setString(3,password);
+				pstmt.setInt(4,level);
+				// ③SQLを実行
+				i = pstmt.executeUpdate();
+				con.commit();	
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rset != null)
+						rset.close();
+					if (pstmt != null)
+						pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			disconnect();
+			return i;
+		}
+
 	
 	  
 //	ディスコネクトメソッド   データベースからの接続を終了する
