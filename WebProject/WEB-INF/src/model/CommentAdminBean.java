@@ -1,14 +1,24 @@
 package model;
 
+import java.io.Serializable;
 
-
-public class CommentAdminBean  {
+public class CommentAdminBean implements Serializable {
 	public int employeeID;
 	public String content;
 	public String changeDay;
 	public String name;
 	public String title;
 	public int commentNumber;
+	
+	public CommentAdminBean() {}
+	public CommentAdminBean(int commentNumber,int employeeID,String name,String title,String changeDay ) {
+		this.commentNumber=commentNumber;
+		this.employeeID=employeeID;
+		this.name=name;
+		this.title=title;
+		this.changeDay=changeDay;
+		
+	}
 	
 
 	public void setEmployeeID(Integer employeeID){
