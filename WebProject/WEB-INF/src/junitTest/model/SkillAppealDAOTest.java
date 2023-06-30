@@ -49,19 +49,19 @@ class SkillAppealDAOTest {
 		String skill_name = "Java";
 		String skill_detail = "すごい";
 		int status = 1;				
-		List<String> parameter = Arrays.asList("3");
-		EmployeeBean eb = setmodel.setEmployeeBean(parameter);
+		//List<String> parameter = Arrays.asList("3");
+		EmployeeBean eb = new EmployeeBean();
+		eb.setEmployeeID(3);
+		eb.setName(name);
 		boolean result =sadao.insertSkillRequest(eb, name, skill_name, skill_detail, status);
-		if(result != false);
-			int rowsAffected = 1;
-			    if(rowsAffected >= 0);
-			    	boolean result2 = true;
+		System.out.println(result);
+		
 		//List<String> parameter = Arrays.asList("3", "唐澤崇仁", "Java", "すごい", "1", "2023/06/28 15:17:22.581");
 		//SkillAppealBean sab = setmodel.setSkillAppealBean(parameter);
 		
 		//if (sab != null);
 		//    boolean result = true;
-		assertEquals(success, result2);
+		assertEquals(success, result);
 	}
 	@Test
 	@DisplayName("insertメソッドテスト2 失敗")

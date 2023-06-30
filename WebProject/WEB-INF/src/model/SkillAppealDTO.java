@@ -18,9 +18,9 @@ public class SkillAppealDTO {
         return skillList.get(i);
     }
 
-    public List<SkillAppealBean> getAllSkill() {
-        return skillList;
-    }
+//    public List<SkillAppealBean> getAllSkill() {
+//        return skillList;
+//    }
 
     public int size() {
         return skillList.size();

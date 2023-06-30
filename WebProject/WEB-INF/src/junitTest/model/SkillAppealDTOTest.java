@@ -30,7 +30,7 @@ class SkillAppealDTOTest {
 		
 		assertEquals(sab, sadto.getSkill(0));
 		assertEquals(1, sadto.size());
-		assertEquals(sab, sadto.getAllSkill());
+	
 	}
 	
 		
