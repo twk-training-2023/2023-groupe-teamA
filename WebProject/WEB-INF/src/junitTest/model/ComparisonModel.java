@@ -2,12 +2,27 @@ package junitTest.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+<<<<<<< HEAD
 import model.ProfileBean;
 import model.ProfileDTO;
 import model.SkillAppealBean;
 import model.SkillAppealDTO;
 
 public class ComparisonModel {
+=======
+import model.LoginInfo;
+import model.ProfileBean;
+import model.ProfileDTO;
+
+public class ComparisonModel {
+	public void ComparisonLoginInfo(LoginInfo ans, LoginInfo loginInfo) {
+		assertEquals(ans.getEmployeeID(), loginInfo.getEmployeeID());
+		assertEquals(ans.getName(), loginInfo.getName());
+		assertEquals(ans.getPermissionLevel(), loginInfo.getPermissionLevel());
+	}
+	
+	
+>>>>>>> 0adf843420a4a86cc8b528927931808bf473a985
 //	public void ComparisonEmployeeDTO(EmployeeDTO ansdto, EmployeeDTO edto) {
 //		for (int i = 0; i < ansdto.size(); i++) {
 //			EmployeeBean ansb = ansdto.get(i);
@@ -45,6 +60,7 @@ public class ComparisonModel {
 //		}
 //	}
 //	
+<<<<<<< HEAD
 	public void ComparisonSkillAppealDTO(SkillAppealDTO ansdto, SkillAppealDTO sdto) {
 		for (int i = 0; i < ansdto.size(); i++) {
 			SkillAppealBean ansb = ansdto.getSkill(i);
@@ -56,4 +72,17 @@ public class ComparisonModel {
 			assertEquals(ansb.getskill_send_date(), sb.getskill_send_date());
 		}
 	}
+=======
+//	public void ComparisonSkillAppealDTO(SkillAppealDTO ansdto, SkillAppealDTO sdto) {
+//		for (int i = 0; i < ansdto.size(); i++) {
+//			SkillAppealBean ansb = ansdto.getSkill(i);
+//			SkillAppealBean sb = sdto.getSkill(i);
+//			assertEquals(ansb.getEmployeeID(), sb.getEmployeeID());
+//			assertEquals(ansb.getskill_level(), sb.getskill_level());
+//			assertEquals(ansb.getskill_detail(), sb.getskill_detail());
+//			assertEquals(ansb.getskill_change_send(), sb.getskill_change_send());
+//			assertEquals(ansb.getskill_send_date(), sb.getskill_send_date());
+//		}
+//	}
+>>>>>>> 0adf843420a4a86cc8b528927931808bf473a985
 }

@@ -11,8 +11,8 @@
 <body>
 	<h1>スキル申請フォーム</h1>
 	<%@include file="header-navi.jsp" %>
-	<form method="post" action="<%=request.getContextPath()%>/SkillApprovalServlet">
-		<table>
+	<form method="post" action="<%=request.getContextPath()%>/SkillApprovalServlet" >
+		<table align="center">
 			<tr>
 
 			    <th>スキル名：</th>

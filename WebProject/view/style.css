@@ -45,3 +45,8 @@ hr {
 .errorMsg {
 	color: red;
 }
+
+.unfinished {
+	pointer-events: none;
+	text-decoration: line-through;
+}

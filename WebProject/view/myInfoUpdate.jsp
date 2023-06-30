@@ -16,7 +16,7 @@
 	ProfileBean pb = pdto.get(0);
 	%>
 	<form method="post"
-		action="<%=request.getContextPath()%>/MyInfoUpDateServlet">
+		action="<%=request.getContextPath()%>/MyInfoUpDateServlet" class="contact-form">
 		<table>
 			<tr>
 				<th>名前</th>
