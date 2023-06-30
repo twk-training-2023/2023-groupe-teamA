@@ -42,11 +42,13 @@ public class EmployeesListServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//文字コードの設定
 //		引数の文字コードをUTF-8に設定
 		request.setCharacterEncoding("UTF-8");
  		response.setContentType("text/html; charset=UTF-8");
+ 		
+ 		//HttpSessionリクエストを出し、ログインインフォの情報を取得
  		HttpSession session = request.getSession();
  		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
  		
@@ -56,9 +58,10 @@ public class EmployeesListServlet extends HttpServlet {
 // 		EmployeeテーブルのDAO「EmployeeDAO」のコンストラクタを実行
  		EmployeeDAO edao = new EmployeeDAO();
  		
-// 		社員一覧情報　格納
+// 		社員取得一覧情報をDTO(edto)にEmployeeDAOのselectAllメソッドの値を格納
  		EmployeeDTO edto = edao.selectAll(loginInfo);
- 
+ 		
+ 		//リクエストスコープに結果格納
  		 request.setAttribute("edto",edto);
  		 
 // 		JSPへのフォワード処理

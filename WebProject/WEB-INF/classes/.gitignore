@@ -1,6 +1,4 @@
-/.gitkeep
-/controller/
 /junitTest/
+/controller/
 /model/
 /org/
-/SESSIONS.ser
