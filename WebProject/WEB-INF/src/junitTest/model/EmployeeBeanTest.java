@@ -29,16 +29,34 @@ class EmployeeBeanTest {
 	// 	mailaddress メールアドレスのgetter/setterテスト
 	@Test
 	@DisplayName("メールアドレスのgetter/setterテスト")
-	void testGetSetname() {
+	void testGetSetMailaddress() {
 		String ans = "kanato-momozaki@twk.co.jp";
-		eb.setName(ans);
-		assertEquals(ans, eb.getName());
+		eb.setMailaddress(ans);
+		assertEquals(ans, eb.getMailaddress());
 	}
 	
 	// 	password パスワードのgetter/setterテスト
 	@Test
-	@DisplayName("社員番号のgetter/setterテスト")
-	void testGetSetpermissionLevel() {
+	@DisplayName("パスワードのgetter/setterテスト")
+	void testGetSetPassword() {
+		String ans = "twkadmin";
+		eb.setPassword(ans);
+		assertEquals(ans, eb.getPassword());
+	}
+	
+	// 	name 名前のgetter/setterテスト
+	@Test
+	@DisplayName("名前のgetter/setterテスト")
+	void testGetSetName() {
+		String ans = "桃﨑";
+		eb.setName(ans);
+		assertEquals(ans, eb.getName());
+	}
+	
+	// 	permissionLevel 権限レベルのgetter/setterテスト
+	@Test
+	@DisplayName("権限レベルのgetter/setterテスト")
+	void testGetSetPermissionLevel() {
 		int ans = 5;
 		eb.setPermissionLevel(ans);
 		assertEquals(ans, eb.getPermissionLevel());

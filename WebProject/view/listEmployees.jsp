@@ -19,8 +19,8 @@
 <div align="center">
 	<input type = "submit" value = "追加">
 </form>
-	<button>更新</button>
-	<button>削除</button>
+	<button  class="unfinished">更新</button>
+	<button  class="unfinished">削除</button>
 </div><br>
 </table>
 

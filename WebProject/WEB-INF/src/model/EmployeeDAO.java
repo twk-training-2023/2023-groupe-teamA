@@ -127,7 +127,6 @@ import java.sql.SQLException;
 	//社員情報の更新　アップデート
 	public int selfUpdateInfo(EmployeeBean eb, LoginInfo loginInfo) {
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
 		int flg = 0;
 		String sql = "update employee set mail_address = ?, password = ? where id = ?;";
 		try {
@@ -144,8 +143,6 @@ import java.sql.SQLException;
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rset != null)
-					rset.close();
 				if (pstmt != null)
 					pstmt.close();
 			} catch (Exception e) {
@@ -156,7 +153,7 @@ import java.sql.SQLException;
 		return flg;
 	}
 	
-	public boolean insertEmployeeCSV(EmployeeDTO edto,LoginInfo loginInfo) throws SQLException {
+	public boolean insertEmployee(EmployeeDTO edto,LoginInfo loginInfo) throws SQLException {
 		PreparedStatement pstmtID = null;
 		PreparedStatement pstmtEmployee = null;
 		PreparedStatement pstmtProfile = null;
@@ -259,34 +256,24 @@ import java.sql.SQLException;
 	
 	// 社員追加処理
 		public int addEmployee(String name,String mail,String password,int level,LoginInfo loginInfo) {
-
 			PreparedStatement pstmt = null;
-
 			ResultSet rset = null;
-
 			int i = 0;
-
 			String sql = "insert into employee (name, mail_address, password , permission_level) values(?,?,?,?);";
-
 			try {
-
 				// ①DBに接続    
 				connection(loginInfo.getPermissionLevel());
 				//自動コミットoff
 				con.setAutoCommit(false);
-
 				// ②ステートメントを生成
 				pstmt = con.prepareStatement(sql);
-
 				pstmt.setString(1,name);
 				pstmt.setString(2,mail);
 				pstmt.setString(3,password);
 				pstmt.setInt(4,level);
-
 				// ③SQLを実行
 				i = pstmt.executeUpdate();
-				con.commit();
-				
+				con.commit();	
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
