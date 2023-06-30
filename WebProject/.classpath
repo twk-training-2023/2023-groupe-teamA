@@ -14,6 +14,12 @@
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/java_eclipse/jar/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/java_eclipse/jar/commons-logging-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/java_eclipse/jar/spring-core-3.2.3.release.jar"/>
+	<classpathentry kind="lib" path="C:/java_eclipse/jar/spring-mock-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/java_eclipse/jar/spring-test-6.0.10.jar"/>
+	<classpathentry kind="lib" path="C:/java_eclipse/jar/postgresql-42.6.0.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

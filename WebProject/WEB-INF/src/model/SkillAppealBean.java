@@ -21,7 +21,7 @@ public class SkillAppealBean {
 		return skill_level;
 	}
 
-	public void setEmployeeID(String skill_level) {
+	public void setskill_level(String skill_level) {
 		this.skill_level = skill_level;
 	}
 
