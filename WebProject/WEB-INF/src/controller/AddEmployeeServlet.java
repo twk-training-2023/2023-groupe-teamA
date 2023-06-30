@@ -57,8 +57,6 @@ public class AddEmployeeServlet extends HttpServlet {
 		EmployeeDAO edao = new EmployeeDAO();
 
 
-
-
 		//結果表示
 		int result = edao.addEmployee(name,mail,password,level,loginInfo);
 		if(result==1) {
@@ -71,6 +69,3 @@ public class AddEmployeeServlet extends HttpServlet {
 
 	}
 }
-
-
-

@@ -14,7 +14,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import controller.ContactAdministratorsFromServlet;
-import controller.ContactAdministratorsListServlet;
+import model.CommentAdminBean;
 import model.LoginInfo;
 
 class ContactAdministratorsFromServletTest {
@@ -32,8 +32,8 @@ class ContactAdministratorsFromServletTest {
 	
 	@Test
 	@DisplayName("コンストラクタテスト")
-	public void testCalc() {
-		ContactAdministratorsListServlet testTarget = new ContactAdministratorsListServlet();
+	public void testConstructor() {
+		ContactAdministratorsFromServlet testTarget = new ContactAdministratorsFromServlet();
 		assertNotNull(testTarget);
 	}
 	
@@ -42,22 +42,37 @@ class ContactAdministratorsFromServletTest {
 	@DisplayName("Postメソッド_パターン01_logininfoなし")
 	public void testDoPost_001() throws ServletException, IOException {
 		target.doPost(req, resp);
-		HttpSession session = req.getSession();
 		assertEquals("view/login.jsp", resp.getForwardedUrl());//遷移先
-		assertEquals("セッションが切れました。再ログインをしてください。", session.getAttribute("errorMsg"));
+		assertEquals("セッションが切れました。再ログインをしてください。", req.getAttribute("errorMsg"));
 	}
 
 	
 	@Test
 	@DisplayName("Postメソッド_パターン02_logininfoあり")
 	public void testDoPost_002() throws ServletException, IOException {
-		LoginInfo li = new LoginInfo();
+		//logininfo処理
+		LoginInfo loginInfo = new LoginInfo();
 		HttpSession session = req.getSession();
-		li.setName("渡辺颯汰");
-		li.setEmployeeID(5);
-		li.setPermissionLevel(5);
-		session.setAttribute("logininfo", li);
-		assertEquals("/view/myPage.jsp", resp.getForwardedUrl());//遷移先
+		loginInfo.setName("なまえ");
+		loginInfo.setEmployeeID(1);
+		loginInfo.setPermissionLevel(5);
+		
+		CommentAdminBean caBean = new CommentAdminBean();
+		
+		caBean.setTitle("タイトル");
+		caBean.setContent("本文");
+		session.setAttribute("loginInfo", loginInfo);
+		
+		target.doPost(req, resp);
+		
+		//遷移先テスト
+		assertEquals("/view/myPage.jsp", resp.getForwardedUrl());
+		
 		
 	}
+	
+
 }
+	
+	
+

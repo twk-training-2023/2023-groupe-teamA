@@ -13,6 +13,8 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import controller.ContactAdministratorsListServlet;
+import model.CommentAdminDAO;
+import model.CommentAdminDTO;
 
 
 class ContactAdministratorsListServletTest {
@@ -36,12 +38,13 @@ class ContactAdministratorsListServletTest {
 	}
 
 	@Test
-	@DisplayName("Postメソッド_パターン01_入力なし")
-	public void testDoPost_001() throws ServletException, IOException {
-		//target.doPost();
-//		CommentAdminDAO caDAO = new CommentAdminDAO();
-//		CommentAdminDTO caDTO =caDAO.selectAllCommentAdmin();
-//		assertEquals("リクエスト：テスト",caDTO,req.getAttribute("caDTOlist"));
+	@DisplayName("Getメソッド")
+	public void testDoGet_001() throws ServletException, IOException {
+		target.doGet(req,resp);
+		CommentAdminDAO caDAO = new CommentAdminDAO();
+		CommentAdminDTO caDTO =caDAO.selectAllCommentAdmin();
+		req.setAttribute("caDTOlist", caDTO);
+		assertEquals(caDTO,req.getAttribute("caDTOlist"));
 		
 		assertEquals("/view/contactAdministratorsList.jsp", resp.getForwardedUrl());
 	}

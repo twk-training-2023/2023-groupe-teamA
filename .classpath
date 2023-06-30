@@ -9,6 +9,7 @@
 	</classpathentry>
 <<<<<<< Updated upstream
 	<classpathentry kind="lib" path="WebProject/WEB-INF/lib/postgresql-42.6.0.jar"/>
+<<<<<<< HEAD
 =======
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 >>>>>>> Stashed changes
@@ -26,5 +27,12 @@
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/commons-logging-1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
 >>>>>>> Stashed changes
+=======
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/annotations-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/el-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/jasper-el.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/servlet-api.jar"/>
+>>>>>>> 4d57d073d82d187b044870a6a12429c67f0ea911
 	<classpathentry kind="output" path="WebProject/WEB-INF/classes"/>
 </classpath>

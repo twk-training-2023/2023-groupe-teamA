@@ -85,13 +85,14 @@ public class CommentAdminDAO {
 	  }
 	
 	//管理者向け連絡入力処理メソッド
-	public CommentAdminDTO insertCommentAdmin(CommentAdminBean caBean, LoginInfo loginInfo) { //入力処理
+	public int insertCommentAdmin(CommentAdminBean caBean, LoginInfo loginInfo) { //入力処理
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		CommentAdminDTO cadto = new CommentAdminDTO();
+		
+		int flg = 0;
 		
 		try {
-		      connect(5);
+		      connect(loginInfo.getPermissionLevel());
 		      String sql = "insert into emp.comment_admin (id,name,title,content,posted_date) "//コメント番号、社員番号、社員名、タイトル、コンテンツ、日にち
 		      		+ "values ( ?, ?, ?, ?, current_timestamp ) ";
 		      
@@ -100,7 +101,7 @@ public class CommentAdminDAO {
 		          pstmt.setString(2,loginInfo.getName());
 		          pstmt.setString(3,caBean.getTitle());
 		          pstmt.setString(4,caBean.getContent());
-		          pstmt.executeUpdate();//sql実行
+		          flg = pstmt.executeUpdate();//sql実行
 		          //戻り値で判定未実装
 		        
 		   
@@ -117,43 +118,44 @@ public class CommentAdminDAO {
 	      }
 	    }
 	    disconnect();
-	    return cadto;
+	    return flg;
 	}
 	
-	//未完成
-	public CommentAdminDTO selectDetailCommentAdmin(CommentAdminBean caBean) { //詳細表示
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		CommentAdminDTO cadto = new CommentAdminDTO();
-
-		try {
-		      connect(4);
-		      String sql = "select id,name,title,content,posted_date from emp.admin_comment "
-		      		+ " where content_number = ? ";
-		          
-		          pstmt = conn.prepareStatement(sql);
-		          pstmt.setInt(1,caBean.getCommentNumber());
-		          
-		          pstmt.executeQuery(sql);
-		          
-		          cadto.add(caBean); 
-		        
-		   
-		}catch (Exception e) {
-		      e.printStackTrace();
-	    } finally {
-	      try {
-	        if (rs != null)
-	          rs.close();
-	        if (pstmt != null)
-	          pstmt.close();
-	      } catch (Exception e) {
-	        e.printStackTrace();
-	      }
-	    }
-	    disconnect();
-	    return cadto;
-	}
+	//管理者向け連絡詳細取得処理未実装
+	
+//	public CommentAdminDTO selectDetailCommentAdmin(CommentAdminBean caBean) { 
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		CommentAdminDTO cadto = new CommentAdminDTO();
+//
+//		try {
+//		      connect(4);
+//		      String sql = "select id,name,title,content,posted_date from emp.admin_comment "
+//		      		+ " where content_number = ? ";
+//		          
+//		          pstmt = conn.prepareStatement(sql);
+//		          pstmt.setInt(1,caBean.getCommentNumber());
+//		          
+//		          pstmt.executeQuery(sql);
+//		          
+//		          cadto.add(caBean); 
+//		        
+//		   
+//		}catch (Exception e) {
+//		      e.printStackTrace();
+//	    } finally {
+//	      try {
+//	        if (rs != null)
+//	          rs.close();
+//	        if (pstmt != null)
+//	          pstmt.close();
+//	      } catch (Exception e) {
+//	        e.printStackTrace();
+//	      }
+//	    }
+//	    disconnect();
+//	    return cadto;
+//	}
 	
 }
 

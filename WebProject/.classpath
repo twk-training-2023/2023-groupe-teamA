@@ -15,10 +15,11 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/spring-core-3.2.3.release.jar"/>
-	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/spring-mock-2.0.6.jar"/>
-	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/commons-logging-1.2/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/lib/postgresql-42.6.0.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/tomcat-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TWKPC22121401007/Documents/2023-groupe-teamA/WebProject/WEB-INF/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TWKPC22121401007/Documents/2023-groupe-teamA/WebProject/WEB-INF/lib/commons-logging-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TWKPC22121401007/Documents/2023-groupe-teamA/WebProject/WEB-INF/lib/spring-core-3.2.3.release.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TWKPC22121401007/Documents/2023-groupe-teamA/WebProject/WEB-INF/lib/spring-mock-2.0.6.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
