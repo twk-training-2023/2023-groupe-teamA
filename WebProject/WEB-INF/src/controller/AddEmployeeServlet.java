@@ -32,15 +32,10 @@ public class AddEmployeeServlet extends HttpServlet {
 
 	// @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
 
 	// @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Jspのフォーム画面から検索対象ユーザID取得
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -53,13 +48,14 @@ public class AddEmployeeServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		int level = Integer.parseInt(request.getParameter("level"));
 
-		// インスタンス化
+		// インスタンス（edao）生成
 		EmployeeDAO edao = new EmployeeDAO();
 
 
+		//インスタンスメソッドにアクセス
+		edao.addEmployee(name,mail,password,level,loginInfo);
+		
 		//結果表示
-		int result = edao.addEmployee(name,mail,password,level,loginInfo);
-		if(result==1) {
 			RequestDispatcher rd = request.getRequestDispatcher("/view/administratorMenu.jsp");
 
 			rd.forward(request, response);
@@ -68,4 +64,3 @@ public class AddEmployeeServlet extends HttpServlet {
 		}
 
 	}
-}
