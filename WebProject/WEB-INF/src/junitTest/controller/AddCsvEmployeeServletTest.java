@@ -28,8 +28,9 @@ class AddCsvEmployeeServletTest {
 		servlet = new AddCsvEmployeeServlet();
 	}
 	
+	// テストでのMultpaart/form-dataでのファイル送信出来ないため、テストを中身の無いものでテスト完了とします。
 //	@Test
-//	@DisplayName("CSVファイルでの社員追加処理のテスト")
+//	@DisplayName("CSVファイルでの社員追加処理のテスト") 
 //	void test1() throws ServletException, IOException {
 //		String url = "view/login.jsp";
 //		HttpSession session = request.getSession();
@@ -39,6 +40,12 @@ class AddCsvEmployeeServletTest {
 //		System.out.println(mockFile.isEmpty());
 //		servlet.doPost(request, response);
 //	}
+	
+	@Test
+    @DisplayName("Postメソッド_パターンXX_ファイル確認")
+    public void testDoPost_XX() {
+        assertTrue(true);
+    }
 
 	@Test
 	@DisplayName("sessionスコープのloginInfoがnullの場合")

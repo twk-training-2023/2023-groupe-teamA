@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="WebProject/WEB-INF/src"/>
+	<classpathentry kind="src" path="WebProject/work"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="WebProject/WEB-INF/lib/postgresql-42.6.0.jar"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+>>>>>>> Stashed changes
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper-el.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+<<<<<<< Updated upstream
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+=======
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/postgresql-42.6.0.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/spring-core-3.2.3.release.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/spring-mock-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/commons-logging-1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/lib/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
+>>>>>>> Stashed changes
+=======
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/annotations-api.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/el-api.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/jasper-el.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades-2023-03-java-win-64bit-jre_20230326/tomcat/9/lib/servlet-api.jar"/>
+>>>>>>> 4d57d073d82d187b044870a6a12429c67f0ea911
 	<classpathentry kind="output" path="WebProject/WEB-INF/classes"/>
 </classpath>

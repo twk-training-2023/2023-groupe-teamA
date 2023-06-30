@@ -10,7 +10,7 @@
 <body>
 	<p>スキルアピール一覧</p>
 	<%@include file="header-navi.jsp" %>
-	<table border="1" width="1000" height="500">
+	<table border="1" width="1000" height="500" align="center">
 		<tr>
 			<th>名前</th>
 			<th>スキル名</th>
